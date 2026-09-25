@@ -88,15 +88,31 @@ export const RESEARCH_QUESTIONS = [
 export const NEWS = [
   {
     date: 'Aug 2025',
-    text: 'Promoted to Software Engineer 2, AI Acceleration, at Cisco. My second promotion in 18 months.',
+    text: 'Promoted to Software Engineer 2 on the AI Acceleration team at Cisco, 12 months after the last promotion.',
   },
   {
     date: '2025',
-    text: 'Joined the MiCoSys Lab at San José State University as a Research Associate, working with Dr. Saptarishi Sengupta on the efficiency of temporal graph neural networks.',
+    text: 'Joined the MiCoSys Lab at San José State University as a Research Associate, working with Dr. Saptarishi Sengupta on efficient training of temporal graph neural networks.',
+  },
+  {
+    date: 'Aug 2024',
+    text: 'Converted from intern to Software Engineer 1 at Cisco, six months after joining.',
+  },
+  {
+    date: '2024',
+    text: 'Graduated from Manipal Institute of Technology with a B.Tech in Computer Science & Engineering and a minor in Big Data Analytics (8.91/10 CGPA, top 15%).',
+  },
+  {
+    date: '2024',
+    text: 'Placed third of 100+ entries in the Cisco Intern Case Study Competition with an NLP pipeline for standardizing 50,000+ supplier names.',
   },
   {
     date: 'Apr 2024',
     text: 'Our paper on vaccine misinformation spreading over user-association graphs appeared in Procedia Computer Science (ICMLDE 2023).',
+  },
+  {
+    date: 'Jan 2024',
+    text: 'Started as a Software Engineering Intern in Supply Chain Operations at Cisco, Bengaluru.',
   },
   {
     date: 'Dec 2023',
@@ -104,11 +120,27 @@ export const NEWS = [
   },
   {
     date: '2023',
-    text: 'Presented SatelTensor at the Tensor Computation & Machine Learning Workshop, IISc Bengaluru; selected for the ACM Winter School on Optimization for ML & OR at IIT Goa.',
+    text: 'Presented SatelTensor at the Tensor Computation & Machine Learning Workshop, IISc Bengaluru.',
+  },
+  {
+    date: '2023',
+    text: 'Selected for the ACM Winter School on Optimization for ML & OR at IIT Goa, and the Summer School on Dynamic Resource Allocation at the Center for Networked Intelligence, IISc Bengaluru.',
   },
   {
     date: 'Aug 2023',
-    text: 'Finished a deep learning research internship at the Medical Informatics Lab, IIT Kharagpur, and presented the work at the Digital Health Symposium.',
+    text: 'Finished a deep learning research internship at the Medical Informatics Lab, IIT Kharagpur, and presented the OCT anomaly-detection work at the Digital Health Symposium.',
+  },
+  {
+    date: '2023',
+    text: 'VIKAS and EyeEncrypt, both presented at ATIS 2022, published in Springer CCIS vol. 1804.',
+  },
+  {
+    date: '2022',
+    text: 'QuCardio reached the Grand Finale of the QETCI Global Quantum Hackathon, top 16 of 1,600+ teams from 25+ countries.',
+  },
+  {
+    date: '2022',
+    text: 'Led a team of 6 to the Smart India Hackathon Grand Finale (NDRF track) with VIKAS, a multimodal disaster-response system.',
   },
 ] as const
 
@@ -128,7 +160,7 @@ export const TALKS = [
   },
   {
     title: 'QuCardio: A Quantum Ecosystem for Cardiovascular Disease Detection',
-    venue: 'Global Quantum Science & Technology Hackathon, Grand Finale',
+    venue: 'QETCI Global Quantum Hackathon, Grand Finale',
     type: 'Finalist presentation',
     year: '2022',
   },
@@ -413,7 +445,7 @@ export const RESEARCH_EXPERIENCE = [
     current: false,
     points: [
       'Compared QSVC, Pegasos QSVC and a quanvolutional neural network with classical baselines for detecting cardiovascular disease from ECG images. 97% accuracy, 10 to 14 points above the classical models.',
-      'Funded by MeitY (Govt. of India) and AWS. Grand Finalist, Global Quantum Ecosystems Hackathon 2022 (top 16 of 1,600+ teams). Published in IEEE Access.',
+      'Funded by MeitY (Govt. of India) and AWS. Grand Finalist, QETCI Global Quantum Hackathon 2022 (top 16 of 1,600+ teams). Published in IEEE Access.',
     ],
   },
   {
@@ -493,7 +525,7 @@ export const ACHIEVEMENTS = [
     group: 'Research Recognition & Competitions',
     items: [
       {
-        title: 'Grand Finalist, Global Quantum Science & Technology Hackathon',
+        title: 'Grand Finalist, QETCI Global Quantum Hackathon',
         detail: 'Top 16 of 1,600+ teams across 25+ countries (quantum ML).',
         year: '2022',
       },
