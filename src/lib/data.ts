@@ -11,15 +11,15 @@ export const PROFILE = {
   // What I want to be read as, first line of the page.
   headline: 'Machine learning researcher',
   subhead:
-    'I work on making graph learning scale. Right now that means the efficiency of temporal graph neural networks — cutting the memory and compute cost of learning on large, constantly changing graphs without giving up the temporal detail that makes those models worth using.',
+    'I study how to train graph neural networks on graphs that keep changing. At MiCoSys Lab I work on temporal GNNs for dynamic graphs with millions of edges, trained under a fixed memory and compute budget.',
   currentLine:
-    'Research Associate, MiCoSys Lab (San José State University) · Software Engineer 2, AI Acceleration at Cisco',
+    'Research Associate, MiCoSys Lab, San José State University · Software Engineer 2, AI Acceleration, Cisco',
   location: 'Bengaluru, India',
   email: 'gauthamprabhu9@gmail.com',
   links: {
     github: 'https://github.com/GauthamPrabhuM',
     linkedin: 'https://www.linkedin.com/in/gautham-prabhu-5b2342192/',
-    scholar: 'https://scholar.google.com/citations?user=GdnOL2wAAAAJ',
+    scholar: 'https://scholar.google.com/citations?user=eFGVT2UAAAAJ',
     cv: '/assets/CV.pdf',
   },
   photo: '/assets/me.png',
@@ -39,27 +39,27 @@ export const RESEARCH_INTERESTS = [
 // admissions reader sees a trajectory, not a list.
 export const NARRATIVE = {
   thesis:
-    'One question runs through all my work: how can a model learn faithful representations of data that is high-dimensional, relational, and changing over time — without demanding more computation and memory than we can actually afford? It runs from my early work on quantum kernels and tensor methods to what I do now with temporal graph neural networks, and it ties together the three things I keep coming back to: representation learning, graph machine learning, and the efficiency of the systems that run them.',
+    'Most of my research comes back to one trade-off. A model has to represent data that is high-dimensional, relational and changing over time, and it has to do that inside a fixed budget of memory and compute. In QuCardio the budget was counted in qubits. In production systems at Cisco it is counted in milliseconds. At MiCoSys it is the memory a temporal graph network spends on state for every node.',
   paragraphs: [
     {
-      heading: 'Structure as inductive bias',
-      body: 'My early research kept coming back to the structure that conventional pipelines throw away. In QuCardio, I asked whether quantum feature maps — which embed inputs into exponentially large Hilbert spaces — could separate ECG-derived signals that classical kernels could not, and found consistent gains over strong classical baselines. SatelTensor came at the same idea from the other side: Tucker and CP decompositions to compress high-dimensional satellite tensors while keeping their spatial–temporal factors intact. Both rested on one belief — that the geometry and low-rank structure of data are worth modeling directly, not flattening away.',
+      heading: 'Early work: structure worth keeping',
+      body: 'My first projects were about structure that standard pipelines discard. In QuCardio we tested whether quantum feature maps could separate ECG images that classical kernels could not. QSVC, Pegasos QSVC and a quanvolutional neural network reached 97% accuracy, 10 to 14 points above classical baselines we trained on the same data. SatelTensor approached the same idea with classical tools, using Tucker and CP decompositions to compress satellite image stacks while keeping their spatial and temporal factors separate. Both projects treated the geometry of the data as something to model directly.',
     },
     {
-      heading: 'Representation learning under constraints',
-      body: 'Later projects taught me that you can\'t separate representation learning from the conditions it runs under — few labels, distribution shift, noisy data, and in clinical work, error costs that aren\'t symmetric. I built ensemble feature-fusion methods for anomaly detection in optical coherence tomography and segmentation pipelines for retinal vasculature, where careful preprocessing and calibration mattered as much as model capacity. Working on vaccine misinformation pushed me toward relational structure head-on: instead of classifying posts in isolation, I modeled how content spreads across the graph of user interactions, pairing transformer text representations with the dynamics of the network underneath.',
+      heading: 'Learning under real constraints',
+      body: 'The medical imaging and NLP projects added constraints of a different kind: few labels, noisy inputs, unbalanced classes and, in clinical work, errors that do not cost the same in both directions. At the IIT Kharagpur Medical Informatics Lab I built an ensemble feature-fusion method for anomaly detection in optical coherence tomography scans. At Manipal I built retinal vessel segmentation pipelines over 3,000 fundus images. In the vaccine misinformation project we stopped classifying posts in isolation and modeled how they spread across the graph of user interactions, running BERT and XLNet over 10,000 posts alongside that propagation graph. It was the first project where I modeled the graph itself.',
     },
     {
-      heading: 'Toward graph and temporal learning',
-      body: 'All of these threads meet in graph machine learning. Relational dependencies, change over time, and the need to learn efficiently from large, irregular data are exactly what graph neural networks are built for — and even more so temporal GNNs, where the graph itself changes as you go. That is what I work on now at MiCoSys: the efficiency of training temporal GNNs — the memory cost of keeping per-node state, the overhead of sampling temporal neighborhoods, and the trouble of scaling continuous-time models to graphs with millions of interactions. The catch is that the most expressive temporal models tend to be the least scalable, and closing that expressivity–efficiency gap is the problem I most want to spend a PhD on.',
+      heading: 'Temporal graph learning',
+      body: 'Temporal graph neural networks combine the problems above: relational data, change over time, and the cost of learning at scale. Continuous-time models keep a memory state for every node and sample a temporal neighborhood at each step, and both costs grow with the number of interactions. At MiCoSys, with Dr. Saptarishi Sengupta, I work on training these models on dynamic graphs with millions of edges under a fixed memory and compute budget, using PyTorch Geometric, DGL and CUDA across several GPUs. The most expressive temporal models are usually the most expensive to train, and that gap is the problem I want to keep working on.',
     },
     {
-      heading: 'Grounded in systems',
-      body: 'My day job feeds this rather than competing with it. At Cisco I build and run machine-learning systems at production scale — retrieval, evaluation, and reliability for LLM-based agents under real load — which has given me a concrete sense of what scalability actually costs: latency and memory budgets, distribution drift, and the gap between a good benchmark number and how a model behaves once it is deployed. I want a PhD that lets me chase the foundational questions in efficient graph learning without losing that systems view.',
+      heading: 'Production systems',
+      body: 'At Cisco I build LLM-based agents for Supply Chain Operations and own their retrieval quality, evaluation and guardrails. Four agents now run in production and close 35% of incoming support cases with no human in the loop. Running them has made the cost of scale concrete: latency and memory budgets, input distributions that drift, and the distance between a benchmark score and a deployed system.',
     },
   ],
   future:
-    'Going forward, I want to work at the efficiency frontier of graph and temporal representation learning: algorithms and architectures that make learning on large, dynamic, relational data actually tractable — memory-efficient state, principled sampling and sparsification, and a clearer theory of how expressivity, scalability, and generalization trade off against each other — along with the systems abstractions to get those methods into real use.',
+    'Next, I want to work on graph and temporal representation learning where efficiency is part of the problem statement: compact node state, sampling and sparsification that come with guarantees, and a clearer account of how expressivity, cost and generalization trade off. I am also interested in the systems work needed to run these methods on real graphs.',
 }
 
 // ── Research questions ────────────────────────────────────────────────────────
@@ -69,17 +69,17 @@ export const RESEARCH_QUESTIONS = [
   {
     id: 'RQ1',
     question:
-      'How much per-node memory state do temporal GNNs actually require to retain predictive accuracy on continuous-time dynamic graphs — and can that state be compressed, shared, or recomputed without loss?',
+      'How much per-node memory does a temporal GNN need to keep its accuracy on continuous-time dynamic graphs, and can that state be compressed, shared or recomputed instead of stored?',
   },
   {
     id: 'RQ2',
     question:
-      'Can temporal neighborhood sampling be made principled rather than heuristic — which guarantees on the learned representation survive sparsification of the temporal computation graph?',
+      'Can temporal neighborhood sampling come with guarantees? Which properties of the learned representation survive when the temporal computation graph is sparsified?',
   },
   {
     id: 'RQ3',
     question:
-      'What is the formal trade-off between temporal expressivity and computational cost? Can the expressivity–efficiency frontier of dynamic graph models be characterized, and where on it do existing architectures sit?',
+      'What does temporal expressivity cost in compute and memory, and where do existing dynamic graph architectures sit on that trade-off?',
   },
 ] as const
 
@@ -87,12 +87,8 @@ export const RESEARCH_QUESTIONS = [
 // Reverse-chronological, dated, one line each — the canonical academic format.
 export const NEWS = [
   {
-    date: 'Jun 2026',
-    text: 'Preparing applications to PhD programs in computer science (Fall 2027 entry), focused on efficient graph and temporal representation learning.',
-  },
-  {
     date: 'Aug 2025',
-    text: 'Promoted to Software Engineer 2 (AI Acceleration) at Cisco — second promotion in 18 months.',
+    text: 'Promoted to Software Engineer 2, AI Acceleration, at Cisco. My second promotion in 18 months.',
   },
   {
     date: '2025',
@@ -100,11 +96,11 @@ export const NEWS = [
   },
   {
     date: 'Apr 2024',
-    text: 'Our paper on modeling vaccine-misinformation propagation over user-association graphs appeared in Procedia Computer Science (ICMLDE 2023).',
+    text: 'Our paper on vaccine misinformation spreading over user-association graphs appeared in Procedia Computer Science (ICMLDE 2023).',
   },
   {
     date: 'Dec 2023',
-    text: 'QuCardio — quantum machine learning for cardiovascular detection — published in IEEE Access (Q1). Now at 50+ citations.',
+    text: 'QuCardio, on quantum machine learning for cardiovascular disease detection, published in IEEE Access (Q1). It has since passed 60 citations.',
   },
   {
     date: '2023',
@@ -112,7 +108,7 @@ export const NEWS = [
   },
   {
     date: 'Aug 2023',
-    text: 'Completed a deep learning research internship at the Medical Informatics Lab, IIT Kharagpur; presented at the Digital Health Symposium.',
+    text: 'Finished a deep learning research internship at the Medical Informatics Lab, IIT Kharagpur, and presented the work at the Digital Health Symposium.',
   },
 ] as const
 
@@ -132,13 +128,13 @@ export const TALKS = [
   },
   {
     title: 'QuCardio: A Quantum Ecosystem for Cardiovascular Disease Detection',
-    venue: 'Global Quantum Science & Technology Hackathon — Grand Finale',
+    venue: 'Global Quantum Science & Technology Hackathon, Grand Finale',
     type: 'Finalist presentation',
     year: '2022',
   },
   {
     title: 'VIKAS: A Multimodal Framework for Disaster Management',
-    venue: 'Smart India Hackathon (NDRF track) — Grand Finale',
+    venue: 'Smart India Hackathon (NDRF track), Grand Finale',
     type: 'Finalist presentation',
     year: '2022',
   },
@@ -164,8 +160,8 @@ export const PUBLICATIONS = [
     venueDetail: 'vol. 11, pp. 136122–136135',
     venueType: 'Journal (Q1)',
     year: 2023,
-    note: 'Quantum feature maps and quanvolutional models for ECG classification, yielding consistent gains over matched classical kernel baselines (up to ~14% absolute). Supported by MeitY and AWS.',
-    citations: '50+',
+    note: 'Quantum kernel methods (QSVC, Pegasos QSVC) and a quanvolutional neural network for ECG image classification. 97% accuracy, 10 to 14 points above matched classical baselines. Funded by MeitY and AWS.',
+    citations: '60+',
     doi: '10.1109/ACCESS.2023.3338145',
     link: 'https://ieeexplore.ieee.org/document/10335179',
     bibtex: `@article{prabhu2023qucardio,
@@ -194,7 +190,7 @@ export const PUBLICATIONS = [
     venueDetail: 'vol. 235, pp. 1803–1813 (ICMLDE 2023)',
     venueType: 'Conference',
     year: 2024,
-    note: 'Couples transformer-based text classification with modeling of information propagation over the user-interaction graph, improving detection beyond content-only signals.',
+    note: 'Adds a model of how posts spread over the user-interaction graph to BERT and XLNet text classifiers, and improves on content-only detection.',
     citations: null,
     doi: '10.1016/j.procs.2024.04.171',
     link: 'https://www.sciencedirect.com/science/article/pii/S1877050924008470',
@@ -224,7 +220,7 @@ export const PUBLICATIONS = [
     venueDetail: 'vol. 1804',
     venueType: 'Conference',
     year: 2023,
-    note: 'A multimodal framework integrating natural-language and visual signals for real-time triage during disaster response. First author.',
+    note: 'Combines text and image inputs to triage incoming information during disaster response. First author.',
     citations: null,
     doi: '10.1007/978-981-99-2264-2_22',
     link: 'https://link.springer.com/chapter/10.1007/978-981-99-2264-2_22',
@@ -247,7 +243,7 @@ export const PUBLICATIONS = [
     venueDetail: 'vol. 1804',
     venueType: 'Conference',
     year: 2023,
-    note: 'Deep retinal-vessel segmentation combined with cryptographic protection of clinical imaging data, addressing accuracy and confidentiality jointly.',
+    note: 'Retinal vessel segmentation paired with Diffie–Hellman key exchange and AES-256, so clinical images can leave the hospital network encrypted.',
     citations: null,
     doi: '10.1007/978-981-99-2264-2_9',
     link: 'https://link.springer.com/chapter/10.1007/978-981-99-2264-2_9',
@@ -271,7 +267,7 @@ export const PUBLICATIONS = [
     venueDetail: 'vol. 2571, p. 012021',
     venueType: 'Peer-reviewed',
     year: 2023,
-    note: 'A systematic review synthesizing architectures, preprocessing strategies, and evaluation protocols for retinal vessel segmentation.',
+    note: 'Reviews the deep learning architectures, preprocessing steps and evaluation protocols used for retinal vessel segmentation.',
     citations: null,
     doi: '10.1088/1742-6596/2571/1/012021',
     link: 'https://iopscience.iop.org/article/10.1088/1742-6596/2571/1/012021',
@@ -294,7 +290,7 @@ export const PUBLICATIONS = [
     venueDetail: 'Tensor Computation & ML Workshop',
     venueType: 'Workshop',
     year: 2023,
-    note: 'Tucker and CP decompositions for low-rank, structure-preserving representation of high-dimensional satellite imagery. First author.',
+    note: 'Tucker and CP decompositions for low-rank representations of satellite image stacks that keep spatial and temporal factors separate. First author.',
     citations: null,
     doi: null,
     link: null,
@@ -316,25 +312,25 @@ export const PROJECTS = [
     period: '2025 – Present',
     status: 'Ongoing · MiCoSys Lab',
     motivation:
-      'Temporal GNNs achieve strong predictive performance on dynamic graphs, but their cost scales poorly: maintaining per-node memory state and sampling temporal neighborhoods becomes prohibitive as interactions reach the millions.',
+      'Temporal GNNs predict well on dynamic graphs, but training cost grows badly with scale. Per-node memory state and temporal neighborhood sampling both become expensive once interactions reach the millions.',
     approach:
-      'Studying memory-efficient state representations and training procedures for temporal GNNs, with explicit attention to the trade-off between temporal expressivity and computational/memory cost on large, continuously evolving graphs.',
+      'Training temporal GNNs under a fixed memory and compute budget, and measuring what each saving costs in temporal expressivity.',
     contribution:
-      'Ongoing work aimed at reducing the training-time and memory footprint of temporal GNNs while preserving predictive accuracy.',
+      'In progress. The target is lower training time and memory use at the same predictive accuracy.',
     stack: ['PyTorch Geometric', 'DGL', 'CUDA', 'Distributed Training'],
     links: [],
   },
   {
     id: 'qucardio',
-    title: 'QuCardio — Quantum ML for Cardiovascular Diagnosis',
+    title: 'QuCardio: Quantum ML for Cardiovascular Diagnosis',
     period: '2022 – 2023',
     status: 'Published · IEEE Access',
     motivation:
-      'Classical kernels saturate on certain ECG-derived classification tasks; quantum feature maps offer access to higher-dimensional embedding spaces that may separate otherwise inseparable signals.',
+      'Classical kernels plateau on some ECG classification tasks. Quantum feature maps embed inputs in much larger spaces and might separate classes that classical kernels cannot.',
     approach:
-      'Implemented and compared QSVC, Pegasos QSVC, and quanvolutional quantum neural networks against matched classical baselines on ECG image data.',
+      'Compared QSVC, Pegasos QSVC and a quanvolutional neural network against classical baselines we trained on the same ECG image data.',
     contribution:
-      'Consistent improvements over classical baselines (up to ~14% absolute, 97% accuracy). Published in IEEE Access; supported by MeitY and AWS; Grand Finalist among 1,600+ teams.',
+      '97% accuracy, 10 to 14 points above the classical baselines. Published in IEEE Access and funded by MeitY and AWS. Grand Finalist, top 16 of 1,600+ teams.',
     stack: ['Qiskit', 'Python', 'Quantum ML', 'scikit-learn'],
     links: [
       { label: 'Paper', href: 'https://ieeexplore.ieee.org/document/10335179' },
@@ -350,11 +346,11 @@ export const PROJECTS = [
     period: '2022 – 2023',
     status: 'Published · Procedia CS',
     motivation:
-      'Detecting misinformation from text alone ignores a strong complementary signal: how content propagates through networks of interacting users.',
+      'Text alone misses a useful signal: how a post moves through the network of users who share it.',
     approach:
-      'Combined transformer encoders (BERT, XLNet) with graph-based modeling of propagation over the user-interaction network across a corpus of ~10,000 posts.',
+      'BERT and XLNet encoders combined with a graph model of propagation over user interactions, on a corpus of 10,000 posts.',
     contribution:
-      'Improved classification over content-only baselines (F1 > 0.90 on benchmark data); an early step toward the relational and temporal modeling that defines my current work.',
+      'F1 above 0.90 on the benchmark, ahead of content-only baselines. My first project with an explicit graph model.',
     stack: ['BERT', 'XLNet', 'PyTorch', 'Graph Modeling'],
     links: [
       {
@@ -365,15 +361,15 @@ export const PROJECTS = [
   },
   {
     id: 'sateltensor',
-    title: 'SatelTensor — Tensor Decomposition for Satellite Data',
+    title: 'SatelTensor: Tensor Decomposition for Satellite Data',
     period: '2023',
     status: 'Presented · TCML, IISc',
     motivation:
-      'High-dimensional satellite tensors are costly to process, and naive dimensionality reduction discards the spatial–temporal structure that downstream tasks depend on.',
+      'Satellite image stacks are large, and generic dimensionality reduction throws away the spatial and temporal structure that later tasks depend on.',
     approach:
-      'Applied Tucker and CP decompositions to obtain low-rank, structure-preserving representations of satellite image stacks.',
+      'Tucker and CP decompositions to get low-rank representations that keep that structure.',
     contribution:
-      'Demonstrated efficient low-rank representations of spatial–temporal data; presented at the TCML Workshop, IISc Bengaluru.',
+      'Presented at the Tensor Computation & Machine Learning Workshop, IISc Bengaluru.',
     stack: ['Python', 'TensorLy', 'NumPy'],
     links: [],
   },
@@ -383,15 +379,15 @@ export const PROJECTS = [
 export const RESEARCH_EXPERIENCE = [
   {
     role: 'Research Associate',
-    group: 'MiCoSys Lab — Machine Intelligence & Complex Systems',
+    group: 'MiCoSys Lab (Machine Intelligence & Complex Systems)',
     institution: 'San José State University',
     advisor: 'Dr. Saptarishi Sengupta',
     period: '2025 – Present',
     location: 'Remote',
     current: true,
     points: [
-      'Studying the efficiency of training temporal graph neural networks — the memory cost of per-node state and the overhead of temporal neighborhood sampling on large, continuously evolving graphs.',
-      'Developing memory- and compute-efficient training procedures that target the expressivity–scalability trade-off on dynamic graphs with millions of interactions.',
+      'Training temporal graph neural networks on dynamic graphs with millions of edges under a fixed memory and compute budget.',
+      'Focused on the two largest costs, per-node memory state and temporal neighborhood sampling. Built on PyTorch Geometric, DGL and CUDA across several GPUs.',
     ],
   },
   {
@@ -403,8 +399,8 @@ export const RESEARCH_EXPERIENCE = [
     location: 'Remote',
     current: false,
     points: [
-      'Developed ensemble feature-fusion methods for anomaly detection in optical coherence tomography, with color-space feature extraction and calibrated augmentation pipelines.',
-      'Achieved competitive accuracy on multi-class OCT benchmarks; contributed to a dataset of 3,000+ annotated scans. Presented at the IIT Kharagpur Digital Health Symposium.',
+      'Proposed an ensemble feature-fusion method for anomaly detection in optical coherence tomography, with color-space features, preprocessing and augmentation tuned against a multi-class benchmark.',
+      'Contributed to a dataset of 3,000 annotated retinal scans and presented the work at the IIT Kharagpur Digital Health Symposium.',
     ],
   },
   {
@@ -416,8 +412,8 @@ export const RESEARCH_EXPERIENCE = [
     location: 'Manipal, India',
     current: false,
     points: [
-      'Investigated quantum machine learning for cardiovascular detection (QSVC, Pegasos QSVC, quanvolutional QNNs), obtaining consistent gains over matched classical kernel baselines (up to ~14% absolute).',
-      'Supported by MeitY (Govt. of India) and AWS. Grand Finalist, Global Quantum Ecosystems Hackathon 2022 (top 16 of 1,600+ teams). Published in IEEE Access.',
+      'Compared QSVC, Pegasos QSVC and a quanvolutional neural network with classical baselines for detecting cardiovascular disease from ECG images. 97% accuracy, 10 to 14 points above the classical models.',
+      'Funded by MeitY (Govt. of India) and AWS. Grand Finalist, Global Quantum Ecosystems Hackathon 2022 (top 16 of 1,600+ teams). Published in IEEE Access.',
     ],
   },
   {
@@ -429,8 +425,8 @@ export const RESEARCH_EXPERIENCE = [
     location: 'Manipal, India',
     current: false,
     points: [
-      'Built deep learning pipelines for retinal vessel segmentation (CLAHE, Gaussian smoothing, edge detection) over 3,000+ fundus images.',
-      'Integrated cryptographic protection (Diffie–Hellman, AES-256) for clinical imaging data at Kasturba Medical College. Published in Springer CCIS.',
+      'Built retinal vessel segmentation pipelines over 3,000 fundus images using CLAHE, Gaussian smoothing and edge detection.',
+      'The images left Kasturba Medical College\'s network, so the pipeline encrypts them with Diffie–Hellman key exchange and AES-256. Published in Springer CCIS.',
     ],
   },
   {
@@ -442,8 +438,8 @@ export const RESEARCH_EXPERIENCE = [
     location: 'Manipal, India',
     current: false,
     points: [
-      'Modeled the diffusion of vaccine misinformation by coupling transformer encoders (BERT, XLNet) with graph-based propagation over a corpus of 10,000+ posts.',
-      'Achieved F1 > 0.90 on benchmark data; published in Procedia Computer Science (iCMLDE 2024).',
+      'Modeled how vaccine misinformation spreads, combining BERT and XLNet encoders with a propagation graph over 10,000 posts.',
+      'F1 above 0.90 on the benchmark. Published in Procedia Computer Science (ICMLDE 2023).',
     ],
   },
 ] as const
@@ -451,30 +447,30 @@ export const RESEARCH_EXPERIENCE = [
 // ── Professional experience (applied research / research-to-production) ───────
 export const PROFESSIONAL = {
   summary:
-    'Machine-learning systems in production — where the efficiency constraints I care about in research tend to show up first, and loudest.',
+    'LLM-based agents and ML services in production at Cisco, Supply Chain Operations.',
   roles: [
     {
-      title: 'Software Engineer 2 — AI Acceleration',
+      title: 'Software Engineer 2, AI Acceleration',
       org: 'Cisco Systems',
       team: 'Supply Chain Operations',
       period: 'Aug 2025 – Present',
       current: true,
       points: [
-        'Build agentic ML systems (case resolution, knowledge-base indexing, proactive alerts) handling 20% of incoming cases autonomously — 35% lower case volume, 40% lower MTTR, ~5,000 engineer-hours saved per quarter.',
-        'Own the research-to-production loop for LLM-backed agents: retrieval quality, evaluation, and guardrails end-to-end.',
-        'Designed failure-analysis and predictive-maintenance agents under the Quality Transformation Program across global manufacturing sites.',
+        'Four agents in production (service-request resolution, knowledge-base indexing, case follow-up, proactive alerting) close 35% of incoming support cases with no human in the loop, cut mean time to resolution by 40% and return roughly 10,000 engineer-hours a quarter.',
+        'Own the research-to-production path for these agents: retrieval quality, evaluation and guardrails.',
+        'Built failure-analysis and predictive-maintenance agents for the Quality Transformation Program. They root-caused 70% of previously undiagnosed failures across global manufacturing sites.',
       ],
     },
     {
-      title: 'Software Engineer 1 → SE Intern',
+      title: 'Software Engineer 1 · Software Engineering Intern',
       org: 'Cisco Systems',
       team: 'Supply Chain Operations',
       period: 'Jan 2024 – Aug 2025',
       current: false,
       points: [
-        'Double-promoted in 18 months (Intern → SE1 in 6 months; SE1 → SE2 in 12).',
-        'Re-architected legacy failure-analysis workflows into event-driven microservices (FastAPI, Cassandra, Redis on Kubernetes); built ML anomaly-detection over manufacturing telemetry.',
-        '2nd Runner-Up, Cisco Intern Case Study Competition — NLP supplier-name standardization across 50,000+ records (100+ entries).',
+        'Promoted twice in 18 months: intern to SE1 in 6 months, SE1 to SE2 in 12.',
+        'Rewrote legacy failure-analysis workflows as event-driven microservices (FastAPI, Cassandra, Redis on Kubernetes) and added ML anomaly detection over manufacturing telemetry.',
+        'Placed third of 100+ entries in Cisco\'s intern case study competition with an NLP pipeline that standardized supplier names across 50,000 records.',
       ],
     },
   ],
@@ -497,17 +493,17 @@ export const ACHIEVEMENTS = [
     group: 'Research Recognition & Competitions',
     items: [
       {
-        title: 'Grand Finalist — Global Quantum Science & Technology Hackathon',
+        title: 'Grand Finalist, Global Quantum Science & Technology Hackathon',
         detail: 'Top 16 of 1,600+ teams across 25+ countries (quantum ML).',
         year: '2022',
       },
       {
-        title: 'Grand Finalist — Smart India Hackathon (NDRF track)',
+        title: 'Grand Finalist, Smart India Hackathon (NDRF track)',
         detail: 'Led a team of 6 on VIKAS; top team from 1,000+ national entries.',
         year: '2022',
       },
       {
-        title: '2nd Runner-Up — Cisco Intern Case Study Competition',
+        title: '2nd Runner-Up, Cisco Intern Case Study Competition',
         detail: 'NLP supplier-name standardization, 50,000+ records, 100+ entries.',
         year: '2024',
       },
@@ -518,7 +514,7 @@ export const ACHIEVEMENTS = [
     items: [
       {
         title: 'NTSE State Scholar',
-        detail: 'National Talent Search Examination — Rank 21 of 151,000+.',
+        detail: 'National Talent Search Examination, rank 21 of 151,000+.',
         year: '2018',
       },
       {
@@ -532,12 +528,12 @@ export const ACHIEVEMENTS = [
     group: 'Selected Schools & Programmes',
     items: [
       {
-        title: 'ACM Winter School — Optimization for ML & OR',
+        title: 'ACM Winter School on Optimization for ML & OR',
         detail: 'Selected participant, IIT Goa.',
         year: '2023',
       },
       {
-        title: 'Summer School — Dynamic Resource Allocation',
+        title: 'Summer School on Dynamic Resource Allocation',
         detail: 'Center for Networked Intelligence, IISc Bengaluru.',
         year: '2023',
       },
@@ -547,12 +543,12 @@ export const ACHIEVEMENTS = [
     group: 'Leadership',
     items: [
       {
-        title: 'Co-founder & Technical Head — Project Kalpana',
+        title: 'Co-founder & Technical Head, Project Kalpana',
         detail: 'Secured a $13,000 grant; led 8 on an affordable radio-astronomy platform.',
         year: '2022–23',
       },
       {
-        title: 'General Secretary & Treasurer — ACM Student Chapter, Manipal',
+        title: 'General Secretary & Treasurer, ACM Student Chapter, Manipal',
         detail: 'Ran 12+ workshops and hackathons; grew participation 35%.',
         year: '2022–23',
       },
@@ -599,7 +595,7 @@ export const NAV_LINKS = [
 // Compact scholarly metrics shown beneath the hero — kept factual.
 export const HERO_STATS = [
   { value: '6', label: 'peer-reviewed publications' },
-  { value: '50+', label: 'citations (Google Scholar)' },
+  { value: '60+', label: 'citations (Google Scholar)' },
   { value: '2', label: 'first-author papers' },
   { value: '4', label: 'research groups · 3 institutions' },
 ] as const

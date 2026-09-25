@@ -17,7 +17,7 @@ export function Contact() {
       id="contact"
       eyebrow="Get in touch"
       title="Contact"
-      intro="I'm applying to PhD and research-focused master's programs in computer science for Fall 2027. I'm always glad to talk through research directions, possible collaborations, or whether we'd be a good advising fit — just reach out."
+      intro="Email is the best way to reach me about my research, a possible collaboration or anything on this page."
     >
       {/* Methods — compact, inline, supporting only */}
       <FadeIn>
@@ -25,7 +25,7 @@ export function Contact() {
           {METHODS.map((m) => (
             <div key={m.label} className="text-sm leading-relaxed">
               <dt className="inline font-mono text-[11px] uppercase tracking-wide text-muted-foreground">
-                {m.label} —{' '}
+                {m.label}:{' '}
               </dt>
               <dd className="inline text-foreground/85">{m.items.join(', ')}</dd>
             </div>

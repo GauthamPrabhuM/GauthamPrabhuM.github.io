@@ -19,7 +19,7 @@ export function Projects() {
       id="projects"
       eyebrow="Research Projects"
       title="Selected projects"
-      intro="Each stated in terms of its motivation, methods, and contribution."
+      intro="Motivation, approach and outcome for each project."
     >
       <div className="divide-y divide-border">
         {PROJECTS.map((project, i) => (

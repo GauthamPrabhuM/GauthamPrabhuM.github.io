@@ -28,14 +28,14 @@ const serif = Newsreader({
   fallback: ['Georgia', 'serif'],
 })
 
-const SITE_URL = 'https://gauthamprabhum.github.io/Research-Portfolio-Website'
+const SITE_URL = 'https://gauthamprabhum.github.io'
 const description =
-  'Gautham Manuru Prabhu — machine learning researcher studying scalable representation learning on graphs, with a focus on the efficiency of temporal graph neural networks. PhD applicant in computer science.'
+  'Gautham Manuru Prabhu is a machine learning researcher at MiCoSys Lab, San José State University, working on training temporal graph neural networks under a fixed memory and compute budget.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: `${PROFILE.name} — ML Researcher`,
+    default: `${PROFILE.name} · ML Researcher`,
     template: `%s · ${PROFILE.name}`,
   },
   description,
@@ -46,7 +46,6 @@ export const metadata: Metadata = {
     'temporal graph neural networks',
     'GraphML',
     'representation learning',
-    'PhD applicant',
     ...RESEARCH_INTERESTS,
   ],
   authors: [{ name: PROFILE.name }],
@@ -55,13 +54,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     url: SITE_URL,
-    title: `${PROFILE.name} — Machine Learning Researcher`,
+    title: `${PROFILE.name} · Machine Learning Researcher`,
     description,
     siteName: PROFILE.name,
   },
   twitter: {
     card: 'summary',
-    title: `${PROFILE.name} — Machine Learning Researcher`,
+    title: `${PROFILE.name} · Machine Learning Researcher`,
     description,
   },
   robots: { index: true, follow: true },

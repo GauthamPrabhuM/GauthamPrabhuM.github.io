@@ -8,7 +8,7 @@ export function Achievements() {
       id="achievements"
       eyebrow="Recognition"
       title="Awards & leadership"
-      intro="Competitive recognition, scholarships, selective research schools, and leadership roles."
+      intro="Competitions, scholarships, research schools and student leadership."
     >
       <div className="space-y-9">
         {ACHIEVEMENTS.map((group, i) => (

@@ -8,7 +8,7 @@ export function Talks() {
       id="talks"
       eyebrow="Talks"
       title="Talks & presentations"
-      intro="Workshop talks, symposium presentations, and finalist presentations at national and international venues."
+      intro="Talks at workshops and symposia, and finalist presentations at national and international hackathons."
     >
       <ul className="space-y-5">
         {TALKS.map((talk, i) => (

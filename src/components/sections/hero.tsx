@@ -32,7 +32,7 @@ export function Hero() {
               <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-foreground/60">
                 Interests
               </span>
-              <span className="mx-2 text-border">—</span>
+              <span className="mx-2 text-border">·</span>
               {RESEARCH_INTERESTS.join(' · ')}
             </p>
 
