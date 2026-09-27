@@ -30,7 +30,7 @@ const serif = Newsreader({
 
 const SITE_URL = 'https://gauthamprabhum.github.io'
 const description =
-  'Gautham Manuru Prabhu is a machine learning researcher at MiCoSys Lab, San José State University, working on training temporal graph neural networks under a fixed memory and compute budget.'
+  'Gautham Manuru Prabhu is a machine learning researcher at MiCoSys Lab, San José State University, working on temporal graph learning and language models for text-attributed graphs.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -44,6 +44,8 @@ export const metadata: Metadata = {
     'machine learning research',
     'graph neural networks',
     'temporal graph neural networks',
+    'temporal link prediction',
+    'text-attributed graphs',
     'GraphML',
     'representation learning',
     ...RESEARCH_INTERESTS,

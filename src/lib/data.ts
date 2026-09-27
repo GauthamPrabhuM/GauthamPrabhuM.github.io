@@ -1,7 +1,7 @@
 // ============================================================================
 //  Content layer — single source of truth for the site.
-//  Framed around the research thesis: efficient & scalable learning over
-//  complex, structured, and time-evolving data (GraphML / Temporal GNNs).
+//  Framed around the current MiCoSys work: language models and temporal
+//  graph learning on text-attributed graphs (manuscript in preparation).
 // ============================================================================
 
 // ── Identity ────────────────────────────────────────────────────────────────
@@ -11,7 +11,7 @@ export const PROFILE = {
   // What I want to be read as, first line of the page.
   headline: 'Machine learning researcher',
   subhead:
-    'I study how to train graph neural networks on graphs that keep changing. At MiCoSys Lab I work on temporal GNNs for dynamic graphs with millions of edges, trained under a fixed memory and compute budget.',
+    'I work on temporal graph learning for graphs whose interactions carry text, such as email threads and event records. At MiCoSys Lab I am testing whether language models improve future-link prediction on these graphs, and which part of the model any improvement comes from.',
   currentLine:
     'Research Associate, MiCoSys Lab, San José State University · Software Engineer 2, AI Acceleration, Cisco',
   location: 'Bengaluru, India',
@@ -27,11 +27,11 @@ export const PROFILE = {
 
 // One-line research interests for the overview chip row.
 export const RESEARCH_INTERESTS = [
-  'Graph Representation Learning',
   'Temporal & Dynamic Graphs',
-  'Efficient & Scalable Deep Learning',
-  'Geometric Deep Learning',
-  'Machine Learning Systems',
+  'Graph Representation Learning',
+  'Language Models on Graphs',
+  'Parameter-Efficient Learning',
+  'Reproducibility in ML',
 ]
 
 // ── Research narrative ────────────────────────────────────────────────────────
@@ -39,19 +39,19 @@ export const RESEARCH_INTERESTS = [
 // admissions reader sees a trajectory, not a list.
 export const NARRATIVE = {
   thesis:
-    'Most of my research comes back to one trade-off. A model has to represent data that is high-dimensional, relational and changing over time, and it has to do that inside a fixed budget of memory and compute. In QuCardio the budget was counted in qubits. In production systems at Cisco it is counted in milliseconds. At MiCoSys it is the memory a temporal graph network spends on state for every node.',
+    'Most of my research asks what a model gains from structure it would otherwise ignore, and what it costs to use it. The structure has changed from project to project: the geometry of ECG signals, the spread of posts across a social graph, and now the timing of interactions in a graph where every edge carries text. So has the budget. In QuCardio it was counted in qubits. In production systems at Cisco it is counted in milliseconds. At MiCoSys it is counted in trainable parameters.',
   paragraphs: [
     {
-      heading: 'Early work: structure worth keeping',
+      heading: 'Early work',
       body: 'My first projects were about structure that standard pipelines discard. In QuCardio we tested whether quantum feature maps could separate ECG images that classical kernels could not. QSVC, Pegasos QSVC and a quanvolutional neural network reached 97% accuracy, 10 to 14 points above classical baselines we trained on the same data. SatelTensor approached the same idea with classical tools, using Tucker and CP decompositions to compress satellite image stacks while keeping their spatial and temporal factors separate. Both projects treated the geometry of the data as something to model directly.',
     },
     {
-      heading: 'Learning under real constraints',
+      heading: 'Learning under constraints',
       body: 'The medical imaging and NLP projects added constraints of a different kind: few labels, noisy inputs, unbalanced classes and, in clinical work, errors that do not cost the same in both directions. At the IIT Kharagpur Medical Informatics Lab I built an ensemble feature-fusion method for anomaly detection in optical coherence tomography scans. At Manipal I built retinal vessel segmentation pipelines over 3,000 fundus images. In the vaccine misinformation project we stopped classifying posts in isolation and modeled how they spread across the graph of user interactions, running BERT and XLNet over 10,000 posts alongside that propagation graph. It was the first project where I modeled the graph itself.',
     },
     {
-      heading: 'Temporal graph learning',
-      body: 'Temporal graph neural networks combine the problems above: relational data, change over time, and the cost of learning at scale. Continuous-time models keep a memory state for every node and sample a temporal neighborhood at each step, and both costs grow with the number of interactions. At MiCoSys, with Dr. Saptarishi Sengupta, I work on training these models on dynamic graphs with millions of edges under a fixed memory and compute budget, using PyTorch Geometric, DGL and CUDA across several GPUs. The most expressive temporal models are usually the most expensive to train, and that gap is the problem I want to keep working on.',
+      heading: 'Language and time',
+      body: 'At MiCoSys, with Dr. Saptarishi Sengupta, I work on temporal text-attributed graphs: graphs where each interaction is timestamped and carries text, such as an email or a news event. Temporal graph neural networks model who interacts with whom and when, and recent work reports large gains from adding large language models to them. Those methods change the text representation and the fusion architecture at the same time, so it is hard to tell which one is responsible. I started by building one of these models myself, a frozen language model conditioned on temporal graph embeddings through LoRA adapters. It underperformed a well-trained text-aware temporal GNN, and finding out why became the project. It is now a reproduction and ablation study, and the manuscript is in preparation.',
     },
     {
       heading: 'Production systems',
@@ -59,7 +59,7 @@ export const NARRATIVE = {
     },
   ],
   future:
-    'Next, I want to work on graph and temporal representation learning where efficiency is part of the problem statement: compact node state, sampling and sparsification that come with guarantees, and a clearer account of how expressivity, cost and generalization trade off. I am also interested in the systems work needed to run these methods on real graphs.',
+    'Next, I want to work on how language and structure should be combined in models of evolving graphs. That means knowing when the text adds information the interaction history does not already carry, fusing the two without the fusion step doing all the work, and evaluating these models so that a reported gain survives a change of random seed. Cost matters as well, because the methods that fuse text most deeply are also the most expensive to train and run.',
 }
 
 // ── Research questions ────────────────────────────────────────────────────────
@@ -69,17 +69,17 @@ export const RESEARCH_QUESTIONS = [
   {
     id: 'RQ1',
     question:
-      'How much per-node memory does a temporal GNN need to keep its accuracy on continuous-time dynamic graphs, and can that state be compressed, shared or recomputed instead of stored?',
+      'When does the text on a temporal graph carry information that the interaction history does not already contain?',
   },
   {
     id: 'RQ2',
     question:
-      'Can temporal neighborhood sampling come with guarantees? Which properties of the learned representation survive when the temporal computation graph is sparsified?',
+      'When a language model improves temporal link prediction, how much of the gain comes from the semantics, and how much from the mechanism that fuses them with graph structure?',
   },
   {
     id: 'RQ3',
     question:
-      'What does temporal expressivity cost in compute and memory, and where do existing dynamic graph architectures sit on that trade-off?',
+      'How should these models be evaluated so that a reported improvement is larger than the variation from random seeds, negative sampling and checkpoint selection?',
   },
 ] as const
 
@@ -87,12 +87,16 @@ export const RESEARCH_QUESTIONS = [
 // Reverse-chronological, dated, one line each — the canonical academic format.
 export const NEWS = [
   {
+    date: '2026',
+    text: 'Manuscript in preparation with MiCoSys Lab on when language-model semantics help temporal link prediction.',
+  },
+  {
     date: 'Aug 2025',
     text: 'Promoted to Software Engineer 2 on the AI Acceleration team at Cisco, 12 months after the last promotion.',
   },
   {
     date: '2025',
-    text: 'Joined the MiCoSys Lab at San José State University as a Research Associate, working with Dr. Saptarishi Sengupta on efficient training of temporal graph neural networks.',
+    text: 'Joined the MiCoSys Lab at San José State University as a Research Associate, working with Dr. Saptarishi Sengupta on temporal graph neural networks.',
   },
   {
     date: 'Aug 2024',
@@ -340,16 +344,16 @@ export const PUBLICATIONS = [
 export const PROJECTS = [
   {
     id: 'tgnn',
-    title: 'Efficient Training of Temporal Graph Neural Networks',
+    title: 'Language Models and Temporal Link Prediction',
     period: '2025 – Present',
-    status: 'Ongoing · MiCoSys Lab',
+    status: 'Manuscript in preparation · MiCoSys Lab',
     motivation:
-      'Temporal GNNs predict well on dynamic graphs, but training cost grows badly with scale. Per-node memory state and temporal neighborhood sampling both become expensive once interactions reach the millions.',
+      'Recent methods report large gains from adding language models to temporal graph networks on text-attributed graphs. They change the text representation and the fusion architecture together, so the source of the gain is unclear.',
     approach:
-      'Training temporal GNNs under a fixed memory and compute budget, and measuring what each saving costs in temporal expressivity.',
+      'A reproduction and ablation study on a public dynamic text-attributed graph benchmark. The temporal graph model stays fixed while the way text enters it changes.',
     contribution:
-      'In progress. The target is lower training time and memory use at the same predictive accuracy.',
-    stack: ['PyTorch Geometric', 'DGL', 'CUDA', 'Distributed Training'],
+      'Manuscript in preparation. Code and evaluation scripts will be released with it.',
+    stack: ['PyTorch', 'PyTorch Geometric', 'DyGLib', 'LoRA', 'Language Models'],
     links: [],
   },
   {
@@ -418,8 +422,8 @@ export const RESEARCH_EXPERIENCE = [
     location: 'Remote',
     current: true,
     points: [
-      'Training temporal graph neural networks on dynamic graphs with millions of edges under a fixed memory and compute budget.',
-      'Focused on the two largest costs, per-node memory state and temporal neighborhood sampling. Built on PyTorch Geometric, DGL and CUDA across several GPUs.',
+      'Testing whether language-model semantics improve future-link prediction on temporal text-attributed graphs, and whether the gain comes from the text or from how it is fused with graph structure.',
+      'Built an adapter-based language model conditioned on temporal graph embeddings. It underperformed a well-trained text-aware baseline, so the work became a reproduction and ablation study of published methods. Manuscript in preparation.',
     ],
   },
   {
@@ -431,7 +435,7 @@ export const RESEARCH_EXPERIENCE = [
     location: 'Remote',
     current: false,
     points: [
-      'Proposed an ensemble feature-fusion method for anomaly detection in optical coherence tomography, with color-space features, preprocessing and augmentation tuned against a multi-class benchmark.',
+      'Proposed an ensemble feature-fusion method for detecting anomalies in retinal OCT scans, combining color-space features with tuned preprocessing and augmentation.',
       'Contributed to a dataset of 3,000 annotated retinal scans and presented the work at the IIT Kharagpur Digital Health Symposium.',
     ],
   },
@@ -531,7 +535,7 @@ export const ACHIEVEMENTS = [
       },
       {
         title: 'Grand Finalist, Smart India Hackathon (NDRF track)',
-        detail: 'Led a team of 6 on VIKAS; top team from 1,000+ national entries.',
+        detail: 'Led a team of 6 on VIKAS, a multimodal disaster-response system. 1,000+ teams competed nationally.',
         year: '2022',
       },
       {
@@ -576,13 +580,18 @@ export const ACHIEVEMENTS = [
     items: [
       {
         title: 'Co-founder & Technical Head, Project Kalpana',
-        detail: 'Secured a $13,000 grant; led 8 on an affordable radio-astronomy platform.',
+        detail: 'Led a team of 8 building a radio astronomy system, funded by a $13,000 R&D grant.',
         year: '2022–23',
       },
       {
         title: 'General Secretary & Treasurer, ACM Student Chapter, Manipal',
-        detail: 'Ran 12+ workshops and hackathons; grew participation 35%.',
+        detail: 'Organized 12+ events, including workshops and hackathons. Participation grew 35%.',
         year: '2022–23',
+      },
+      {
+        title: 'Technical Head, Astronomy Club of Manipal',
+        detail: 'Led 5+ projects and ran astronomy sessions and stargazing events for 200+ students.',
+        year: '2021–23',
       },
     ],
   },
@@ -593,8 +602,9 @@ export const METHODS = [
   {
     label: 'Research methods',
     items: [
-      'Graph Neural Networks',
-      'Temporal Graphs',
+      'Temporal Graph Neural Networks',
+      'Language Models on Graphs',
+      'LoRA / Adapters',
       'Representation Learning',
       'Tensor Decomposition',
       'Quantum ML',
@@ -604,7 +614,7 @@ export const METHODS = [
   },
   {
     label: 'Frameworks',
-    items: ['PyTorch', 'PyTorch Geometric', 'DGL', 'TensorFlow', 'Qiskit', 'scikit-learn'],
+    items: ['PyTorch', 'PyTorch Geometric', 'DGL', 'DyGLib', 'TensorFlow', 'Qiskit', 'scikit-learn'],
   },
   {
     label: 'Systems & tooling',
