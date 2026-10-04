@@ -1,25 +1,10 @@
-# Gautham Manuru Prabhu — Research Website
+# gauthamprabhum.github.io
 
-A research-focused academic website built for MS/PhD admissions in computer science.
-It presents Gautham primarily as a machine-learning researcher (graph & temporal-graph
-learning, efficient/scalable training) and secondarily as a software engineer.
+Source for my research site: https://gauthamprabhum.github.io
 
-Built with **Next.js 14 (App Router) · TypeScript · Tailwind CSS · shadcn/ui-style components ·
-Framer Motion**, statically exported and deployed to **GitHub Pages**.
+Next.js 14 (App Router), TypeScript and Tailwind CSS, exported as static HTML and deployed to GitHub Pages by a workflow on every push to `main`.
 
-## Information architecture
-
-A single, scannable page with anchored sections, ordered by admissions priority:
-
-1. **Research Overview** (`Hero`) — who I am, interests, links, CV.
-2. **Research Journey** (`#research`) — the narrative thesis + recurring threads. *The centerpiece.*
-3. **Publications** (`#publications`) — six peer-reviewed papers, citation style, selected highlighted.
-4. **Featured Research Projects** (`#projects`) — motivation / approach / contribution.
-5. **Experience** (`#experience`) — research first, then professional (applied research), then education.
-6. **Awards & Leadership** (`#achievements`).
-7. **Contact** (`#contact`) — methods strip + channels + CV.
-
-All content lives in [`src/lib/data.ts`](src/lib/data.ts) — edit there, never in components.
+One page, in this order: research overview, research journey, publications, projects, experience, awards and leadership, contact. All content lives in [`src/lib/data.ts`](src/lib/data.ts); components only render it.
 
 ## Project structure
 
@@ -36,7 +21,7 @@ src/
     sections/         # hero, research, publications, projects, experience, achievements, contact
     ui/               # card, badge, button, section, fade-in (shadcn-style primitives)
   lib/
-    data.ts           # ← single source of truth for all content
+    data.ts           # all site content
     utils.ts          # cn(), asset() base-path helper
 ```
 
@@ -55,15 +40,15 @@ export and publishes it on every push to `main`.
 
 1. Create a new GitHub repository and push this folder to `main`.
 2. In **Settings → Pages**, set **Source = GitHub Actions**.
-3. Push — the site deploys automatically.
+3. Push. The site deploys automatically.
 
-**User site** (`GauthamPrabhuM.github.io`): serves at the domain root, no base path needed.
-**Project site** (e.g. `research-site`): the workflow auto-detects the `/research-site` base path
-via `actions/configure-pages` and passes it to Next.js as `NEXT_PUBLIC_BASE_PATH` — no manual config.
+**User site** (`GauthamPrabhuM.github.io`): serves at the domain root, no base path.
+**Project site** (e.g. `research-site`): the workflow detects the `/research-site` base path
+via `actions/configure-pages` and passes it to Next.js as `NEXT_PUBLIC_BASE_PATH`.
 
-> Also Vercel-compatible: `import` the repo and deploy, no changes required.
+Vercel also works without changes.
 
 ## Editing content
 
-Open `src/lib/data.ts`. Everything — narrative, publications, projects, experience,
-achievements, links — is typed and centralized. Components render whatever is there.
+Open `src/lib/data.ts`. Narrative, publications, projects, experience,
+achievements and links are typed and kept in one place. Components render whatever is there.
