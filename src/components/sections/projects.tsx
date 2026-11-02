@@ -19,7 +19,6 @@ export function Projects() {
       id="projects"
       eyebrow="Research Projects"
       title="Selected projects"
-      intro="Motivation, approach and outcome for each project."
     >
       <div className="divide-y divide-border">
         {PROJECTS.map((project, i) => (

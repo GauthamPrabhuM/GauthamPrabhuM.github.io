@@ -2,13 +2,14 @@ import { TALKS } from '@/lib/data'
 import { Section } from '@/components/ui/section'
 import { FadeIn } from '@/components/ui/fade-in'
 
+const ME = 'G. M. Prabhu'
+
 export function Talks() {
   return (
     <Section
       id="talks"
       eyebrow="Talks"
       title="Talks & presentations"
-      intro="Talks at workshops and symposia, and finalist presentations at national and international hackathons."
     >
       <ul className="space-y-5">
         {TALKS.map((talk, i) => (
@@ -21,6 +22,18 @@ export function Talks() {
                 <p className="text-pretty font-medium leading-snug text-foreground">
                   {talk.title}
                 </p>
+                {talk.authors ? (
+                  <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
+                    {talk.authors.map((a, j) => (
+                      <span key={a}>
+                        <span className={a === ME ? 'font-semibold text-foreground' : undefined}>
+                          {a}
+                        </span>
+                        {j < talk.authors!.length - 1 ? ', ' : ''}
+                      </span>
+                    ))}
+                  </p>
+                ) : null}
                 <p className="mt-1 text-sm leading-relaxed text-muted-foreground">
                   <span className="italic">{talk.venue}</span> · {talk.type}
                 </p>

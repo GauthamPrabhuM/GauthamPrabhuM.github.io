@@ -17,7 +17,7 @@ export function Contact() {
       id="contact"
       eyebrow="Get in touch"
       title="Contact"
-      intro="Email is the best way to reach me about my research, a possible collaboration or anything on this page."
+      intro="Email is the best way to reach me."
     >
       {/* Methods — compact, inline, supporting only */}
       <FadeIn>

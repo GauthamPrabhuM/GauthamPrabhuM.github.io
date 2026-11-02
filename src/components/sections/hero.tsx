@@ -24,6 +24,20 @@ export function Hero() {
               {PROFILE.currentLine}
             </p>
 
+            {PROFILE.highlight ? (
+              <a
+                href={PROFILE.highlight.href}
+                className="focus-ring group mt-4 inline-flex flex-wrap items-baseline gap-x-2.5 rounded-sm text-[15px]"
+              >
+                <span className="rounded-sm bg-accent/10 px-1.5 py-0.5 font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
+                  {PROFILE.highlight.label}
+                </span>
+                <span className="text-foreground underline decoration-accent/40 underline-offset-4 group-hover:decoration-accent">
+                  {PROFILE.highlight.text}
+                </span>
+              </a>
+            ) : null}
+
             <p className="mt-6 text-pretty font-serif text-[1.2rem] leading-[1.65] text-foreground/90">
               {PROFILE.subhead}
             </p>
@@ -51,7 +65,7 @@ export function Hero() {
             </nav>
           </FadeIn>
 
-          <FadeIn delay={0.08}>
+          <FadeIn delay={0.08} className="shrink-0">
             <figure className="shrink-0">
               <Image
                 src={asset(PROFILE.photo)}

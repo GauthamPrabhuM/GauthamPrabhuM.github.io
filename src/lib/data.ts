@@ -1,7 +1,5 @@
 // ============================================================================
-//  Content layer — single source of truth for the site.
-//  Framed around the current MiCoSys work: language models and temporal
-//  graph learning on text-attributed graphs (manuscript in preparation).
+//  Content layer: all site copy lives here.
 // ============================================================================
 
 // ── Identity ────────────────────────────────────────────────────────────────
@@ -11,9 +9,15 @@ export const PROFILE = {
   // What I want to be read as, first line of the page.
   headline: 'Machine learning researcher',
   subhead:
-    'I work on temporal graph learning for graphs whose interactions carry text, such as email threads and event records. At MiCoSys Lab I am testing whether language models improve future-link prediction on these graphs, and which part of the model any improvement comes from.',
+    'I research temporal graph learning at MiCoSys Lab, San José State University, and build agentic AI systems at Cisco. I am interested in why models that work in one setting fail in another: when data go missing, conditions shift, or parts that work on their own make the combined model worse.',
   currentLine:
     'Research Associate, MiCoSys Lab, San José State University · Software Engineer 2, AI Acceleration, Cisco',
+  // Short callout under the name. Set to null to hide it.
+  highlight: {
+    label: 'Nov 2026',
+    text: 'First-author poster at the Stanford Graph Learning Workshop 2026',
+    href: '#talks',
+  } as { label: string; text: string; href: string } | null,
   location: 'Bengaluru, India',
   email: 'gauthamprabhu9@gmail.com',
   links: {
@@ -27,129 +31,148 @@ export const PROFILE = {
 
 // One-line research interests for the overview chip row.
 export const RESEARCH_INTERESTS = [
-  'Temporal & Dynamic Graphs',
-  'Graph Representation Learning',
-  'Language Models on Graphs',
-  'Parameter-Efficient Learning',
-  'Reproducibility in ML',
+  'Temporal Graph Learning',
+  'LLMs on Graphs',
+  'Evaluation & Reproducibility',
+  'Learning Under Changing Conditions',
 ]
 
 // ── Research narrative ────────────────────────────────────────────────────────
-// The intellectual core of the site. Written as connected paragraphs so an
-// admissions reader sees a trajectory, not a list.
 export const NARRATIVE = {
   thesis:
-    'Most of my research asks what a model gains from structure it would otherwise ignore, and what it costs to use it. The structure has changed from project to project: the geometry of ECG signals, the spread of posts across a social graph, and now the timing of interactions in a graph where every edge carries text. So has the budget. In QuCardio it was counted in qubits. In production systems at Cisco it is counted in milliseconds. At MiCoSys it is counted in trainable parameters.',
+    'Most of my projects end up being about why a model fails once its assumptions stop holding. I work on this empirically: build the model, test it, then go through what broke.',
   paragraphs: [
     {
-      heading: 'Early work',
-      body: 'My first projects were about structure that standard pipelines discard. In QuCardio we tested whether quantum feature maps could separate ECG images that classical kernels could not. QSVC, Pegasos QSVC and a quanvolutional neural network reached 97% accuracy, 10 to 14 points above classical baselines we trained on the same data. SatelTensor approached the same idea with classical tools, using Tucker and CP decompositions to compress satellite image stacks while keeping their spatial and temporal factors separate. Both projects treated the geometry of the data as something to model directly.',
+      heading: 'Incomplete data',
+      body: 'At IIT Kharagpur\'s Medical Informatics Lab, retinal scans for macular degeneration came in at different resolutions, and many patients were missing one of the modalities. I encoded each modality separately before fusing features, and gave the model each scan in several color spaces.',
     },
     {
-      heading: 'Learning under constraints',
-      body: 'The medical imaging and NLP projects added constraints of a different kind: few labels, noisy inputs, unbalanced classes and, in clinical work, errors that do not cost the same in both directions. At the IIT Kharagpur Medical Informatics Lab I built an ensemble feature-fusion method for anomaly detection in optical coherence tomography scans. At Manipal I built retinal vessel segmentation pipelines over 3,000 fundus images. In the vaccine misinformation project we stopped classifying posts in isolation and modeled how they spread across the graph of user interactions, running BERT and XLNet over 10,000 posts alongside that propagation graph. It was the first project where I modeled the graph itself.',
+      heading: 'Comparing architectures',
+      body: 'In QuCardio we benchmarked quantum kernel methods and a quanvolutional neural network for detecting heart disease from ECG images. They reached 97% accuracy, 10 to 14 points above classical baselines trained on the same data.',
     },
     {
-      heading: 'Language and time',
-      body: 'At MiCoSys, with Dr. Saptarishi Sengupta, I work on temporal text-attributed graphs: graphs where each interaction is timestamped and carries text, such as an email or a news event. Temporal graph neural networks model who interacts with whom and when, and recent work reports large gains from adding large language models to them. Those methods change the text representation and the fusion architecture at the same time, so it is hard to tell which one is responsible. I started by building one of these models myself, a frozen language model conditioned on temporal graph embeddings through LoRA adapters. It underperformed a well-trained text-aware temporal GNN, and finding out why became the project. It is now a reproduction and ablation study, and the manuscript is in preparation.',
+      heading: 'No history to learn from',
+      body: 'At Cisco I led an agentic suite that diagnoses failed hardware tests, usually with no past failures to go on. It root-causes 70% of failures that were previously undiagnosed.',
     },
     {
-      heading: 'Production systems',
-      body: 'At Cisco I build LLM-based agents for Supply Chain Operations and own their retrieval quality, evaluation and guardrails. Four agents now run in production and close 35% of incoming support cases with no human in the loop. Running them has made the cost of scale concrete: latency and memory budgets, input distributions that drift, and the distance between a benchmark score and a deployed system.',
+      heading: 'Text and structure',
+      body: 'At MiCoSys Lab, with Dr. Saptarshi Sengupta, I test whether LLM text features help temporal link prediction. Our first model underperformed a text-aware baseline, so we reproduced CROSS (NeurIPS 2025) and evaluated it more strictly. Against 100 sampled negatives, most of its lead disappears. Text still helps on nodes the model has not seen before, and a text encoder 15 times larger made results worse. I am first author on the poster, at the Stanford Graph Learning Workshop 2026.',
     },
   ],
   future:
-    'Next, I want to work on how language and structure should be combined in models of evolving graphs. That means knowing when the text adds information the interaction history does not already carry, fusing the two without the fusion step doing all the work, and evaluating these models so that a reported gain survives a change of random seed. Cost matters as well, because the methods that fuse text most deeply are also the most expensive to train and run.',
+    'Next I want to pin down when text carries information the interaction history does not, and how to evaluate these models so a reported gain survives a change of protocol.',
 }
 
 // ── Research questions ────────────────────────────────────────────────────────
-// The formal statement of the agenda — numbered, the way a thesis proposal
-// would state them. Rendered as a boxed list inside the research statement.
+// Rendered as a numbered box inside the research statement.
 export const RESEARCH_QUESTIONS = [
   {
     id: 'RQ1',
     question:
-      'When does the text on a temporal graph carry information that the interaction history does not already contain?',
+      'Do reported gains from adding LLMs to temporal graph models hold up under a common evaluation protocol?',
   },
   {
     id: 'RQ2',
     question:
-      'When a language model improves temporal link prediction, how much of the gain comes from the semantics, and how much from the mechanism that fuses them with graph structure?',
+      'When does the text on a graph carry information that the interaction history does not?',
   },
   {
     id: 'RQ3',
-    question:
-      'How should these models be evaluated so that a reported improvement is larger than the variation from random seeds, negative sampling and checkpoint selection?',
+    question: 'Do larger text encoders or deeper fusion improve link prediction?',
   },
 ] as const
 
 // ── News ─────────────────────────────────────────────────────────────────────
-// Reverse-chronological, dated, one line each — the canonical academic format.
+// Reverse-chronological, one line each.
 export const NEWS = [
   {
-    date: '2026',
-    text: 'Manuscript in preparation with MiCoSys Lab on when language-model semantics help temporal link prediction.',
+    date: 'Nov 2026',
+    text: 'First-author poster at the Stanford Graph Learning Workshop 2026 (Nov 3), on when LLM text features help temporal link prediction.',
   },
   {
     date: 'Aug 2025',
-    text: 'Promoted to Software Engineer 2 on the AI Acceleration team at Cisco, 12 months after the last promotion.',
+    text: 'Promoted to Software Engineer 2 at Cisco.',
   },
   {
     date: '2025',
-    text: 'Joined the MiCoSys Lab at San José State University as a Research Associate, working with Dr. Saptarishi Sengupta on temporal graph neural networks.',
+    text: 'Joined MiCoSys Lab, San José State University, as a Research Associate with Dr. Saptarshi Sengupta.',
   },
   {
     date: 'Aug 2024',
-    text: 'Converted from intern to Software Engineer 1 at Cisco, six months after joining.',
+    text: 'Converted from intern to Software Engineer 1 at Cisco after six months.',
   },
   {
     date: '2024',
-    text: 'Graduated from Manipal Institute of Technology with a B.Tech in Computer Science & Engineering and a minor in Big Data Analytics (8.91/10 CGPA, top 15%).',
+    text: 'Graduated from Manipal Institute of Technology, B.Tech in Computer Science, 8.91/10.',
   },
   {
     date: '2024',
-    text: 'Placed third of 100+ entries in the Cisco Intern Case Study Competition with an NLP pipeline for standardizing 50,000+ supplier names.',
+    text: 'Third of 100+ entries in Cisco\'s intern case study competition.',
   },
   {
     date: 'Apr 2024',
-    text: 'Our paper on vaccine misinformation spreading over user-association graphs appeared in Procedia Computer Science (ICMLDE 2023).',
+    text: 'Vaccine misinformation paper published in Procedia Computer Science (ICMLDE 2023).',
   },
   {
     date: 'Jan 2024',
-    text: 'Started as a Software Engineering Intern in Supply Chain Operations at Cisco, Bengaluru.',
+    text: 'Joined Cisco Supply Chain Operations as an intern.',
   },
   {
     date: 'Dec 2023',
-    text: 'QuCardio, on quantum machine learning for cardiovascular disease detection, published in IEEE Access (Q1). It has since passed 60 citations.',
+    text: 'QuCardio published in IEEE Access. 60+ citations since.',
   },
   {
     date: '2023',
-    text: 'Presented SatelTensor at the Tensor Computation & Machine Learning Workshop, IISc Bengaluru.',
+    text: 'Presented SatelTensor at the TCML Workshop, IISc Bengaluru.',
   },
   {
     date: '2023',
-    text: 'Selected for the ACM Winter School on Optimization for ML & OR at IIT Goa, and the Summer School on Dynamic Resource Allocation at the Center for Networked Intelligence, IISc Bengaluru.',
+    text: 'ACM Winter School at IIT Goa, and the CNI Summer School on Dynamic Resource Allocation at IISc.',
   },
   {
     date: 'Aug 2023',
-    text: 'Finished a deep learning research internship at the Medical Informatics Lab, IIT Kharagpur, and presented the OCT anomaly-detection work at the Digital Health Symposium.',
+    text: 'Finished a research internship at the Medical Informatics Lab, IIT Kharagpur.',
   },
   {
     date: '2023',
-    text: 'VIKAS and EyeEncrypt, both presented at ATIS 2022, published in Springer CCIS vol. 1804.',
+    text: 'VIKAS and EyeEncrypt published in Springer CCIS vol. 1804.',
   },
   {
     date: '2022',
-    text: 'QuCardio reached the Grand Finale of the QETCI Global Quantum Hackathon, top 16 of 1,600+ teams from 25+ countries.',
+    text: 'QuCardio placed in the top 16 of 1,600+ teams at the QETCI Global Quantum Hackathon.',
   },
   {
     date: '2022',
-    text: 'Led a team of 6 to the Smart India Hackathon Grand Finale (NDRF track) with VIKAS, a multimodal disaster-response system.',
+    text: 'Led a team of 6 to the Smart India Hackathon Grand Finale with VIKAS.',
   },
 ] as const
 
 // ── Talks & presentations ─────────────────────────────────────────────────────
-export const TALKS = [
+// `authors` is optional; when present the list renders with my name in bold.
+type Talk = {
+  title: string
+  venue: string
+  type: string
+  year: string
+  authors?: readonly string[]
+}
+
+export const TALKS: readonly Talk[] = [
+  {
+    title:
+      'On Link Prediction Using Node-Pair LLM Semantics and Structure in Temporal Text-Attributed Graphs',
+    venue: 'Stanford Graph Learning Workshop 2026, Stanford University',
+    type: 'Poster, first author',
+    year: '2026',
+    authors: [
+      'G. M. Prabhu',
+      'S. Gupta',
+      'A. Nagarajan',
+      'M. Choudhary',
+      'K. Potika',
+      'S. Sengupta',
+    ],
+  },
   {
     title: 'SatelTensor: Satellite Data Exploration via Tensor Decomposition',
     venue: 'Tensor Computation & Machine Learning (TCML) Workshop, IISc Bengaluru',
@@ -174,7 +197,7 @@ export const TALKS = [
     type: 'Finalist presentation',
     year: '2022',
   },
-] as const
+]
 
 // ── Publications ─────────────────────────────────────────────────────────────
 // `selected` surfaces a paper as a highlighted entry. `role` notes contribution
@@ -340,20 +363,19 @@ export const PUBLICATIONS = [
 ] as const
 
 // ── Featured research projects ───────────────────────────────────────────────
-// Research-framed (motivation / approach / contribution), not product blurbs.
 export const PROJECTS = [
   {
     id: 'tgnn',
-    title: 'Language Models and Temporal Link Prediction',
+    title: 'LLM Text Features for Temporal Link Prediction',
     period: '2025 – Present',
-    status: 'Manuscript in preparation · MiCoSys Lab',
+    status: 'First-author poster · Stanford Graph Learning Workshop 2026',
     motivation:
-      'Recent methods report large gains from adding language models to temporal graph networks on text-attributed graphs. They change the text representation and the fusion architecture together, so the source of the gain is unclear.',
+      'Recent methods add LLM summaries to temporal graph networks and report large gains. We wanted to know if those gains hold under a stricter evaluation.',
     approach:
-      'A reproduction and ablation study on a public dynamic text-attributed graph benchmark. The temporal graph model stays fixed while the way text enters it changes.',
+      'Reproduced CROSS (NeurIPS 2025) on Enron and ICEWS1819 over 5 seeds, then ranked it against 100 sampled negatives instead of in-batch ones, next to a DyGFormer + BERT baseline.',
     contribution:
-      'Manuscript in preparation. Code and evaluation scripts will be released with it.',
-    stack: ['PyTorch', 'PyTorch Geometric', 'DyGLib', 'LoRA', 'Language Models'],
+      'The reproduction matched the paper. Under 100 negatives the lead mostly closed: level on Enron, well behind on ICEWS1819 (MRR 0.60 vs 0.89). Text still helped on new nodes (0.70 vs 0.63), and swapping MiniLM for BGE-large, 15 times the size, lowered MRR on both datasets. Full paper in preparation.',
+    stack: ['PyTorch', 'DyGLib', 'LLMs', 'Sentence encoders', 'LoRA'],
     links: [],
   },
   {
@@ -362,11 +384,11 @@ export const PROJECTS = [
     period: '2022 – 2023',
     status: 'Published · IEEE Access',
     motivation:
-      'Classical kernels plateau on some ECG classification tasks. Quantum feature maps embed inputs in much larger spaces and might separate classes that classical kernels cannot.',
+      'Classical kernels plateau on some ECG classification tasks. Quantum feature maps might separate classes they cannot.',
     approach:
-      'Compared QSVC, Pegasos QSVC and a quanvolutional neural network against classical baselines we trained on the same ECG image data.',
+      'QSVC, Pegasos QSVC and a quanvolutional neural network against classical baselines on the same ECG images.',
     contribution:
-      '97% accuracy, 10 to 14 points above the classical baselines. Published in IEEE Access and funded by MeitY and AWS. Grand Finalist, top 16 of 1,600+ teams.',
+      '97% accuracy, 10 to 14 points above the baselines. Funded by MeitY and AWS. Grand Finalist, top 16 of 1,600+ teams.',
     stack: ['Qiskit', 'Python', 'Quantum ML', 'scikit-learn'],
     links: [
       { label: 'Paper', href: 'https://ieeexplore.ieee.org/document/10335179' },
@@ -381,12 +403,10 @@ export const PROJECTS = [
     title: 'Misinformation Propagation on User-Association Graphs',
     period: '2022 – 2023',
     status: 'Published · Procedia CS',
-    motivation:
-      'Text alone misses a useful signal: how a post moves through the network of users who share it.',
+    motivation: 'Text alone misses how a post spreads between users.',
     approach:
-      'BERT and XLNet encoders combined with a graph model of propagation over user interactions, on a corpus of 10,000 posts.',
-    contribution:
-      'F1 above 0.90 on the benchmark, ahead of content-only baselines. My first project with an explicit graph model.',
+      'BERT and XLNet combined with a propagation graph over user interactions, on 10,000 posts.',
+    contribution: 'F1 above 0.90, ahead of content-only baselines.',
     stack: ['BERT', 'XLNet', 'PyTorch', 'Graph Modeling'],
     links: [
       {
@@ -401,11 +421,9 @@ export const PROJECTS = [
     period: '2023',
     status: 'Presented · TCML, IISc',
     motivation:
-      'Satellite image stacks are large, and generic dimensionality reduction throws away the spatial and temporal structure that later tasks depend on.',
-    approach:
-      'Tucker and CP decompositions to get low-rank representations that keep that structure.',
-    contribution:
-      'Presented at the Tensor Computation & Machine Learning Workshop, IISc Bengaluru.',
+      'Generic dimensionality reduction throws away the spatial and temporal structure of satellite image stacks.',
+    approach: 'Tucker and CP decompositions that keep the two separate.',
+    contribution: 'Presented at the TCML Workshop, IISc Bengaluru.',
     stack: ['Python', 'TensorLy', 'NumPy'],
     links: [],
   },
@@ -417,13 +435,13 @@ export const RESEARCH_EXPERIENCE = [
     role: 'Research Associate',
     group: 'MiCoSys Lab (Machine Intelligence & Complex Systems)',
     institution: 'San José State University',
-    advisor: 'Dr. Saptarishi Sengupta',
+    advisor: 'Dr. Saptarshi Sengupta',
     period: '2025 – Present',
     location: 'Remote',
     current: true,
     points: [
-      'Testing whether language-model semantics improve future-link prediction on temporal text-attributed graphs, and whether the gain comes from the text or from how it is fused with graph structure.',
-      'Built an adapter-based language model conditioned on temporal graph embeddings. It underperformed a well-trained text-aware baseline, so the work became a reproduction and ablation study of published methods. Manuscript in preparation.',
+      'First author on our poster at the Stanford Graph Learning Workshop 2026, on whether LLM text features help temporal link prediction.',
+      'Reproduced CROSS (NeurIPS 2025) and re-ran it against 100 sampled negatives. Its lead over a text-aware baseline mostly disappears, except on new nodes. Full paper in preparation.',
     ],
   },
   {
@@ -435,8 +453,8 @@ export const RESEARCH_EXPERIENCE = [
     location: 'Remote',
     current: false,
     points: [
-      'Proposed an ensemble feature-fusion method for detecting anomalies in retinal OCT scans, combining color-space features with tuned preprocessing and augmentation.',
-      'Contributed to a dataset of 3,000 annotated retinal scans and presented the work at the IIT Kharagpur Digital Health Symposium.',
+      'Macular degeneration from multimodal retinal scans with mixed resolutions and missing modalities. Encoded each modality separately, then fused at the feature level.',
+      'Presented at the IIT Kharagpur Digital Health Symposium.',
     ],
   },
   {
@@ -448,8 +466,8 @@ export const RESEARCH_EXPERIENCE = [
     location: 'Manipal, India',
     current: false,
     points: [
-      'Compared QSVC, Pegasos QSVC and a quanvolutional neural network with classical baselines for detecting cardiovascular disease from ECG images. 97% accuracy, 10 to 14 points above the classical models.',
-      'Funded by MeitY (Govt. of India) and AWS. Grand Finalist, QETCI Global Quantum Hackathon 2022 (top 16 of 1,600+ teams). Published in IEEE Access.',
+      'QSVC, Pegasos QSVC and a quanvolutional neural network against classical baselines on ECG images. 97% accuracy, 10 to 14 points higher.',
+      'Funded by MeitY and AWS. Published in IEEE Access.',
     ],
   },
   {
@@ -461,8 +479,8 @@ export const RESEARCH_EXPERIENCE = [
     location: 'Manipal, India',
     current: false,
     points: [
-      'Built retinal vessel segmentation pipelines over 3,000 fundus images using CLAHE, Gaussian smoothing and edge detection.',
-      'The images left Kasturba Medical College\'s network, so the pipeline encrypts them with Diffie–Hellman key exchange and AES-256. Published in Springer CCIS.',
+      'Retinal vessel segmentation over 3,000 fundus images with CLAHE, Gaussian smoothing and edge detection.',
+      'The images left Kasturba Medical College\'s network, so the pipeline encrypts them with Diffie–Hellman and AES-256. Published in Springer CCIS.',
     ],
   },
   {
@@ -474,16 +492,15 @@ export const RESEARCH_EXPERIENCE = [
     location: 'Manipal, India',
     current: false,
     points: [
-      'Modeled how vaccine misinformation spreads, combining BERT and XLNet encoders with a propagation graph over 10,000 posts.',
-      'F1 above 0.90 on the benchmark. Published in Procedia Computer Science (ICMLDE 2023).',
+      'BERT and XLNet with a propagation graph over 10,000 posts to detect vaccine misinformation. F1 above 0.90.',
+      'Published in Procedia Computer Science (ICMLDE 2023).',
     ],
   },
 ] as const
 
-// ── Professional experience (applied research / research-to-production) ───────
+// ── Professional experience ───────────────────────────────────────────────────
 export const PROFESSIONAL = {
-  summary:
-    'LLM-based agents and ML services in production at Cisco, Supply Chain Operations.',
+  summary: 'LLM agents and ML services for Cisco Supply Chain Operations.',
   roles: [
     {
       title: 'Software Engineer 2, AI Acceleration',
@@ -492,9 +509,9 @@ export const PROFESSIONAL = {
       period: 'Aug 2025 – Present',
       current: true,
       points: [
-        'Four agents in production (service-request resolution, knowledge-base indexing, case follow-up, proactive alerting) close 35% of incoming support cases with no human in the loop, cut mean time to resolution by 40% and return roughly 10,000 engineer-hours a quarter.',
-        'Own the research-to-production path for these agents: retrieval quality, evaluation and guardrails.',
-        'Built failure-analysis and predictive-maintenance agents for the Quality Transformation Program. They root-caused 70% of previously undiagnosed failures across global manufacturing sites.',
+        'Led an agentic suite on Cisco\'s product testing platform that works out whether a failed hardware test is down to the script, the environment or the product. It root-causes 70% of previously undiagnosed failures and runs in factories worldwide.',
+        'Contributed to a support-queue agent that resolves 30% of routine requests on its own. Case volume is down 35% and mean time to resolution down 40%.',
+        'The two systems save an estimated $450,000 a year. Presented the work to Cisco\'s Chief Supply Chain Officer.',
       ],
     },
     {
@@ -504,9 +521,9 @@ export const PROFESSIONAL = {
       period: 'Jan 2024 – Aug 2025',
       current: false,
       points: [
-        'Promoted twice in 18 months: intern to SE1 in 6 months, SE1 to SE2 in 12.',
-        'Rewrote legacy failure-analysis workflows as event-driven microservices (FastAPI, Cassandra, Redis on Kubernetes) and added ML anomaly detection over manufacturing telemetry.',
-        'Placed third of 100+ entries in Cisco\'s intern case study competition with an NLP pipeline that standardized supplier names across 50,000 records.',
+        'Intern to SE1 in 6 months, SE1 to SE2 in 12.',
+        'Rebuilt a hand-deployed Python 2 manufacturing service as containerized code. Deploys went from about 6 hours to 4 minutes.',
+        'Third of 100+ in Cisco\'s intern case study competition with an NLP pipeline that standardized 50,000 supplier names.',
       ],
     },
   ],
@@ -535,7 +552,7 @@ export const ACHIEVEMENTS = [
       },
       {
         title: 'Grand Finalist, Smart India Hackathon (NDRF track)',
-        detail: 'Led a team of 6 on VIKAS, a multimodal disaster-response system. 1,000+ teams competed nationally.',
+        detail: 'Led a team of 6 on VIKAS, a multimodal disaster-response system. National finalist among 160,000+ participants.',
         year: '2022',
       },
       {
@@ -580,12 +597,12 @@ export const ACHIEVEMENTS = [
     items: [
       {
         title: 'Co-founder & Technical Head, Project Kalpana',
-        detail: 'Led a team of 8 building a radio astronomy system, funded by a $13,000 R&D grant.',
+        detail: 'Co-founded a student group building a radio telescope. My proposal won the $13,000 university grant, and I led the software-defined radio and signal processing.',
         year: '2022–23',
       },
       {
         title: 'General Secretary & Treasurer, ACM Student Chapter, Manipal',
-        detail: 'Organized 12+ events, including workshops and hackathons. Participation grew 35%.',
+        detail: 'Organized 12+ workshops and hackathons. Participation grew 35%.',
         year: '2022–23',
       },
       {
@@ -634,7 +651,7 @@ export const NAV_LINKS = [
   { href: '#contact', label: 'Contact' },
 ]
 
-// Compact scholarly metrics shown beneath the hero — kept factual.
+// Compact scholarly metrics shown beneath the hero.
 export const HERO_STATS = [
   { value: '6', label: 'peer-reviewed publications' },
   { value: '60+', label: 'citations (Google Scholar)' },

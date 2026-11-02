@@ -27,7 +27,7 @@ export function Publications() {
       id="publications"
       eyebrow="Publications"
       title="Publications"
-      intro="Six peer-reviewed papers in reverse chronological order. My name is in bold; ★ marks selected work."
+      intro="Six peer-reviewed papers. My name is in bold, ★ marks selected work."
     >
       <ol className="space-y-8">
         {sorted.map((pub, i) => (
