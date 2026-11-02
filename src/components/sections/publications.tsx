@@ -20,7 +20,9 @@ function Authors({ authors }: { authors: readonly string[] }) {
 }
 
 export function Publications() {
-  const sorted = [...PUBLICATIONS].sort((a, b) => b.year - a.year)
+  // Widen `link` and `doi` so papers without them still type-check.
+  type Pub = Omit<(typeof PUBLICATIONS)[number], 'link' | 'doi'> & { link: string | null; doi: string | null }
+  const sorted: Pub[] = [...PUBLICATIONS].sort((a, b) => b.year - a.year)
 
   return (
     <Section

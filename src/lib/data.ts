@@ -1,5 +1,5 @@
 // ============================================================================
-//  Content layer: all site copy lives here.
+//  Content layer: all site copy lives here. Facts follow the CV (Oct 2026).
 // ============================================================================
 
 // ── Identity ────────────────────────────────────────────────────────────────
@@ -11,11 +11,11 @@ export const PROFILE = {
   subhead:
     'I research temporal graph learning at MiCoSys Lab, San José State University, and build agentic AI systems at Cisco. I am interested in why models that work in one setting fail in another: when data go missing, conditions shift, or parts that work on their own make the combined model worse.',
   currentLine:
-    'Research Associate, MiCoSys Lab, San José State University · Software Engineer 2, AI Acceleration, Cisco',
+    'Research Intern, MiCoSys Lab, San José State University · Software Engineer II, AI Acceleration, Cisco',
   // Short callout under the name. Set to null to hide it.
   highlight: {
     label: 'Nov 2026',
-    text: 'First-author poster at the Stanford Graph Learning Workshop 2026',
+    text: 'First-author poster at the Stanford Data-Centric AI Workshop 2026',
     href: '#talks',
   } as { label: string; text: string; href: string } | null,
   location: 'Bengaluru, India',
@@ -44,19 +44,19 @@ export const NARRATIVE = {
   paragraphs: [
     {
       heading: 'Incomplete data',
-      body: 'At IIT Kharagpur\'s Medical Informatics Lab, retinal scans for macular degeneration came in at different resolutions, and many patients were missing one of the modalities. I encoded each modality separately before fusing features, and gave the model each scan in several color spaces.',
+      body: 'At IIT Kharagpur\'s Medical Informatics Lab I built dual-encoder, cross-attention models to detect macular degeneration from thermal and structural OCT scans. The scans came in at different resolutions and many patients were missing one modality, so the model had to work without it. I also compared RGB, HSV and thermal inputs to see which helped detection most.',
     },
     {
       heading: 'Comparing architectures',
-      body: 'In QuCardio we benchmarked quantum kernel methods and a quanvolutional neural network for detecting heart disease from ECG images. They reached 97% accuracy, 10 to 14 points above classical baselines trained on the same data.',
+      body: 'In QuCardio we benchmarked quantum kernel methods and quanvolutional networks for classifying heart disease from ECG images. The quanvolutional model reached 97.31% accuracy, 3.88 points above a comparable CNN. I also extended Pegasos QSVC from binary to four-class classification.',
     },
     {
       heading: 'No history to learn from',
-      body: 'At Cisco I led an agentic suite that diagnoses failed hardware tests, usually with no past failures to go on. It root-causes 70% of failures that were previously undiagnosed.',
+      body: 'At Cisco I am lead developer of an agentic test-triage platform for failed hardware tests. It finds root causes for about 70% of previously undiagnosed failures, even on new products with no failure history.',
     },
     {
       heading: 'Text and structure',
-      body: 'At MiCoSys Lab, with Dr. Saptarshi Sengupta, I test whether LLM text features help temporal link prediction. Our first model underperformed a text-aware baseline, so we reproduced CROSS (NeurIPS 2025) and evaluated it more strictly. Against 100 sampled negatives, most of its lead disappears. Text still helps on nodes the model has not seen before, and a text encoder 15 times larger made results worse. I am first author on the poster, at the Stanford Graph Learning Workshop 2026.',
+      body: 'At MiCoSys Lab, with Dr. Saptarshi Sengupta, I test whether LLM text features help temporal link prediction. Our first model underperformed a text-aware baseline, so we reproduced CROSS (NeurIPS 2025) and evaluated it more strictly. Against 100 sampled negatives, most of its lead disappears. Text still helps on nodes the model has not seen before, and a text encoder 15 times larger made results worse. I am first author on the poster, at the Stanford Data-Centric AI Workshop 2026.',
     },
   ],
   future:
@@ -87,19 +87,27 @@ export const RESEARCH_QUESTIONS = [
 export const NEWS = [
   {
     date: 'Nov 2026',
-    text: 'First-author poster at the Stanford Graph Learning Workshop 2026 (Nov 3), on when LLM text features help temporal link prediction.',
+    text: 'First-author poster at the Stanford Data-Centric AI Workshop 2026 (Nov 3), on when LLM text features help temporal link prediction.',
   },
   {
-    date: 'Aug 2025',
-    text: 'Promoted to Software Engineer 2 at Cisco.',
+    date: '2026',
+    text: 'Won the Offensive Summit capture-the-flag security competition at Cisco.',
+  },
+  {
+    date: 'Mar 2026',
+    text: 'Joined MiCoSys Lab, San José State University, as a Research Intern with Dr. Saptarshi Sengupta.',
+  },
+  {
+    date: 'Oct 2025',
+    text: 'Promoted to Software Engineer II on the AI Acceleration team at Cisco.',
   },
   {
     date: '2025',
-    text: 'Joined MiCoSys Lab, San José State University, as a Research Associate with Dr. Saptarshi Sengupta.',
+    text: 'Reviewer for ICMLDE 2025.',
   },
   {
     date: 'Aug 2024',
-    text: 'Converted from intern to Software Engineer 1 at Cisco after six months.',
+    text: 'Promoted from intern to Software Engineer I at Cisco.',
   },
   {
     date: '2024',
@@ -107,7 +115,7 @@ export const NEWS = [
   },
   {
     date: '2024',
-    text: 'Third of 100+ entries in Cisco\'s intern case study competition.',
+    text: 'Second runner-up of 100+ entries in Cisco\'s Intern Case Study Competition.',
   },
   {
     date: 'Apr 2024',
@@ -115,7 +123,7 @@ export const NEWS = [
   },
   {
     date: 'Jan 2024',
-    text: 'Joined Cisco Supply Chain Operations as an intern.',
+    text: 'Joined Cisco Supply Chain as a Software Engineering Intern.',
   },
   {
     date: 'Dec 2023',
@@ -127,11 +135,15 @@ export const NEWS = [
   },
   {
     date: '2023',
-    text: 'ACM Winter School at IIT Goa, and the CNI Summer School on Dynamic Resource Allocation at IISc.',
+    text: 'Radio telescope design paper and retinal segmentation review published in Journal of Physics: Conference Series.',
   },
   {
-    date: 'Aug 2023',
-    text: 'Finished a research internship at the Medical Informatics Lab, IIT Kharagpur.',
+    date: '2023',
+    text: 'Attended the CNI Summer School on Dynamic Resource Allocation at IISc Bengaluru.',
+  },
+  {
+    date: 'Summer 2023',
+    text: 'Research internship at the Medical Informatics Lab, IIT Kharagpur. Presented at the Digital Health Symposium.',
   },
   {
     date: '2023',
@@ -139,11 +151,15 @@ export const NEWS = [
   },
   {
     date: '2022',
-    text: 'QuCardio placed in the top 16 of 1,600+ teams at the QETCI Global Quantum Hackathon.',
+    text: 'QuCardio placed in the top 16 of 1,626 teams at the Global Quantum Science and Technology Hackathon.',
   },
   {
     date: '2022',
-    text: 'Led a team of 6 to the Smart India Hackathon Grand Finale with VIKAS.',
+    text: 'Led our team to the Smart India Hackathon Grand Finale with VIKAS.',
+  },
+  {
+    date: '2022',
+    text: 'Attended the ACM Winter School on Optimization for ML and Operations Research at IIT Goa.',
   },
 ] as const
 
@@ -161,7 +177,7 @@ export const TALKS: readonly Talk[] = [
   {
     title:
       'On Link Prediction Using Node-Pair LLM Semantics and Structure in Temporal Text-Attributed Graphs',
-    venue: 'Stanford Graph Learning Workshop 2026, Stanford University',
+    venue: 'Stanford Data-Centric AI Workshop 2026, Stanford University',
     type: 'Poster, first author',
     year: '2026',
     authors: [
@@ -174,34 +190,24 @@ export const TALKS: readonly Talk[] = [
     ],
   },
   {
+    title:
+      'Enhanced Analytics and Procedural Decision-Making for Ocular Diagnostics Using Multi-Modal Data',
+    venue: 'Digital Health Symposium, IIT Kharagpur',
+    type: 'Talk',
+    year: '2023',
+    authors: ['G. M. Prabhu', 'S. Gupta', 'S. Rathinam'],
+  },
+  {
     title: 'SatelTensor: Satellite Data Exploration via Tensor Decomposition',
     venue: 'Tensor Computation & Machine Learning (TCML) Workshop, IISc Bengaluru',
-    type: 'Contributed talk',
+    type: 'Talk',
     year: '2023',
-  },
-  {
-    title: 'Ensemble Feature Fusion for Anomaly Detection in Optical Coherence Tomography',
-    venue: 'Digital Health Symposium, IIT Kharagpur',
-    type: 'Research presentation',
-    year: '2023',
-  },
-  {
-    title: 'QuCardio: A Quantum Ecosystem for Cardiovascular Disease Detection',
-    venue: 'QETCI Global Quantum Hackathon, Grand Finale',
-    type: 'Finalist presentation',
-    year: '2022',
-  },
-  {
-    title: 'VIKAS: A Multimodal Framework for Disaster Management',
-    venue: 'Smart India Hackathon (NDRF track), Grand Finale',
-    type: 'Finalist presentation',
-    year: '2022',
+    authors: ['G. M. Prabhu', 'S. Gupta'],
   },
 ]
 
 // ── Publications ─────────────────────────────────────────────────────────────
-// `selected` surfaces a paper as a highlighted entry. `role` notes contribution
-// where it strengthens the research story.
+// `selected` surfaces a paper as a highlighted entry.
 export const PUBLICATIONS = [
   {
     id: 'qucardio',
@@ -219,7 +225,7 @@ export const PUBLICATIONS = [
     venueDetail: 'vol. 11, pp. 136122–136135',
     venueType: 'Journal (Q1)',
     year: 2023,
-    note: 'Quantum kernel methods (QSVC, Pegasos QSVC) and a quanvolutional neural network for ECG image classification. 97% accuracy, 10 to 14 points above matched classical baselines. Funded by MeitY and AWS.',
+    note: 'QSVC, Pegasos QSVC and quanvolutional networks for ECG image classification. The quanvolutional model reached 97.31% accuracy, 3.88 points above a comparable CNN. Supported by a $10,200 MeitY–AWS QCAL grant.',
     citations: '60+',
     doi: '10.1109/ACCESS.2023.3338145',
     link: 'https://ieeexplore.ieee.org/document/10335179',
@@ -249,7 +255,7 @@ export const PUBLICATIONS = [
     venueDetail: 'vol. 235, pp. 1803–1813 (ICMLDE 2023)',
     venueType: 'Conference',
     year: 2024,
-    note: 'Adds a model of how posts spread over the user-interaction graph to BERT and XLNet text classifiers, and improves on content-only detection.',
+    note: 'BERT and XLNet fine-tuned on the 15,073-tweet ANTi-Vax dataset, plus a Reddit user-association graph built from vaccine-discussion threads.',
     citations: null,
     doi: '10.1016/j.procs.2024.04.171',
     link: 'https://www.sciencedirect.com/science/article/pii/S1877050924008470',
@@ -302,7 +308,7 @@ export const PUBLICATIONS = [
     venueDetail: 'vol. 1804',
     venueType: 'Conference',
     year: 2023,
-    note: 'Retinal vessel segmentation paired with Diffie–Hellman key exchange and AES-256, so clinical images can leave the hospital network encrypted.',
+    note: 'Retinal vessel segmentation for 3,000+ fundus images, with Diffie–Hellman key exchange and AES-256 so the images can leave the hospital network encrypted.',
     citations: null,
     doi: '10.1007/978-981-99-2264-2_9',
     link: 'https://link.springer.com/chapter/10.1007/978-981-99-2264-2_9',
@@ -321,7 +327,15 @@ export const PUBLICATIONS = [
     selected: false,
     title:
       'A Systematic Review of Deep Learning Approaches for Vessel Segmentation in Retinal Fundus Images',
-    authors: ['G. Hegde', 'S. Prabhu', 'S. Gupta', 'G. M. Prabhu', 'et al.'],
+    authors: [
+      'G. Hegde',
+      'S. Prabhu',
+      'S. Gupta',
+      'G. M. Prabhu',
+      'A. Palorkar',
+      'M. V. Srujan',
+      'S. V. Bhandary',
+    ],
     venue: 'IOP J. Physics: Conference Series',
     venueDetail: 'vol. 2571, p. 012021',
     venueType: 'Peer-reviewed',
@@ -331,7 +345,7 @@ export const PUBLICATIONS = [
     doi: '10.1088/1742-6596/2571/1/012021',
     link: 'https://iopscience.iop.org/article/10.1088/1742-6596/2571/1/012021',
     bibtex: `@article{hegde2023vesselreview,
-  author  = {Hegde, G. and Prabhu, S. and Gupta, S. and Prabhu, G. M. and others},
+  author  = {Hegde, G. and Prabhu, S. and Gupta, S. and Prabhu, G. M. and Palorkar, A. and Srujan, M. V. and Bhandary, S. V.},
   title   = {A Systematic Review of Deep Learning Approaches for Vessel Segmentation in Retinal Fundus Images},
   journal = {Journal of Physics: Conference Series},
   volume  = {2571},
@@ -341,23 +355,27 @@ export const PUBLICATIONS = [
 }`,
   },
   {
-    id: 'sateltensor',
+    id: 'radio-telescope',
     selected: false,
-    title: 'SatelTensor: Satellite Data Exploration via Tensor Decomposition',
-    authors: ['G. M. Prabhu', 'S. Gupta'],
-    venue: 'TCML Workshop, IISc Bengaluru',
-    venueDetail: 'Tensor Computation & ML Workshop',
-    venueType: 'Workshop',
+    title:
+      'Exploring Design Optimisation Techniques of a Radio Telescope Using Fixed Costing Constraints',
+    authors: ['A. A. Iyer', 'G. M. Prabhu', 'T. Gupta', 'S. Deshmukh', 'R. Rivankar'],
+    venue: 'IOP J. Physics: Conference Series',
+    venueDetail: 'vol. 2571, p. 012031',
+    venueType: 'Peer-reviewed',
     year: 2023,
-    note: 'Tucker and CP decompositions for low-rank representations of satellite image stacks that keep spatial and temporal factors separate. First author.',
+    note: 'Design choices for a radio telescope built under a fixed budget.',
     citations: null,
-    doi: null,
-    link: null,
-    bibtex: `@misc{prabhu2023sateltensor,
-  author       = {Prabhu, G. M. and Gupta, S.},
-  title        = {SatelTensor: Satellite Data Exploration via Tensor Decomposition},
-  howpublished = {Tensor Computation \\& Machine Learning Workshop, IISc Bengaluru},
-  year         = {2023}
+    doi: '10.1088/1742-6596/2571/1/012031',
+    link: 'https://iopscience.iop.org/article/10.1088/1742-6596/2571/1/012031',
+    bibtex: `@article{iyer2023radiotelescope,
+  author  = {Iyer, A. A. and Prabhu, G. M. and Gupta, T. and Deshmukh, S. and Rivankar, R.},
+  title   = {Exploring Design Optimisation Techniques of a Radio Telescope Using Fixed Costing Constraints},
+  journal = {Journal of Physics: Conference Series},
+  volume  = {2571},
+  pages   = {012031},
+  year    = {2023},
+  doi     = {10.1088/1742-6596/2571/1/012031}
 }`,
   },
 ] as const
@@ -367,15 +385,15 @@ export const PROJECTS = [
   {
     id: 'tgnn',
     title: 'LLM Text Features for Temporal Link Prediction',
-    period: '2025 – Present',
-    status: 'First-author poster · Stanford Graph Learning Workshop 2026',
+    period: '2026 – Present',
+    status: 'First-author poster · Stanford Data-Centric AI Workshop 2026',
     motivation:
       'Recent methods add LLM summaries to temporal graph networks and report large gains. We wanted to know if those gains hold under a stricter evaluation.',
     approach:
-      'Reproduced CROSS (NeurIPS 2025) on Enron and ICEWS1819 over 5 seeds, then ranked it against 100 sampled negatives instead of in-batch ones, next to a DyGFormer + BERT baseline.',
+      'Reproduced CROSS (NeurIPS 2025) from its released code and LLM chains on Enron and ICEWS1819, then ran ablations against DyGFormer and a structure-aware gate (SAGE) under a common 100-negative protocol over 5 seeds.',
     contribution:
       'The reproduction matched the paper. Under 100 negatives the lead mostly closed: level on Enron, well behind on ICEWS1819 (MRR 0.60 vs 0.89). Text still helped on new nodes (0.70 vs 0.63), and swapping MiniLM for BGE-large, 15 times the size, lowered MRR on both datasets. Full paper in preparation.',
-    stack: ['PyTorch', 'DyGLib', 'LLMs', 'Sentence encoders', 'LoRA'],
+    stack: ['PyTorch', 'DyGLib', 'LLMs', 'Sentence encoders'],
     links: [],
   },
   {
@@ -384,11 +402,11 @@ export const PROJECTS = [
     period: '2022 – 2023',
     status: 'Published · IEEE Access',
     motivation:
-      'Classical kernels plateau on some ECG classification tasks. Quantum feature maps might separate classes they cannot.',
+      'Classical models plateau on some ECG classification tasks. Quantum feature maps might separate classes they cannot.',
     approach:
-      'QSVC, Pegasos QSVC and a quanvolutional neural network against classical baselines on the same ECG images.',
+      'QSVC, Pegasos QSVC and quanvolutional networks on ECG images. I extended Pegasos QSVC from binary to four-class with six one-vs-one models, and tuned feature maps, qubit counts and circuit depth.',
     contribution:
-      '97% accuracy, 10 to 14 points above the baselines. Funded by MeitY and AWS. Grand Finalist, top 16 of 1,600+ teams.',
+      'The quanvolutional model reached 97.31% accuracy, 3.88 points above a comparable CNN. Supported by a $10,200 MeitY–AWS QCAL grant. Grand finalist, top 16 of 1,626 teams.',
     stack: ['Qiskit', 'Python', 'Quantum ML', 'scikit-learn'],
     links: [
       { label: 'Paper', href: 'https://ieeexplore.ieee.org/document/10335179' },
@@ -400,14 +418,15 @@ export const PROJECTS = [
   },
   {
     id: 'misinformation',
-    title: 'Misinformation Propagation on User-Association Graphs',
+    title: 'Vaccine Misinformation: Transformers and User Graphs',
     period: '2022 – 2023',
     status: 'Published · Procedia CS',
-    motivation: 'Text alone misses how a post spreads between users.',
+    motivation: 'Text classifiers see what is said, not who is talking to whom.',
     approach:
-      'BERT and XLNet combined with a propagation graph over user interactions, on 10,000 posts.',
-    contribution: 'F1 above 0.90, ahead of content-only baselines.',
-    stack: ['BERT', 'XLNet', 'PyTorch', 'Graph Modeling'],
+      'Fine-tuned BERT and XLNet on the 15,073-tweet ANTi-Vax dataset, and built a Reddit user-association graph that links authors by post-comment cosine similarity.',
+    contribution:
+      'Compared precision-recall trade-offs between the two models and inspected dense user clusters with NetworkX.',
+    stack: ['BERT', 'XLNet', 'PyTorch', 'NetworkX'],
     links: [
       {
         label: 'Paper',
@@ -419,7 +438,7 @@ export const PROJECTS = [
     id: 'sateltensor',
     title: 'SatelTensor: Tensor Decomposition for Satellite Data',
     period: '2023',
-    status: 'Presented · TCML, IISc',
+    status: 'Talk · TCML, IISc',
     motivation:
       'Generic dimensionality reduction throws away the spatial and temporal structure of satellite image stacks.',
     approach: 'Tucker and CP decompositions that keep the two separate.',
@@ -432,98 +451,109 @@ export const PROJECTS = [
 // ── Research experience ──────────────────────────────────────────────────────
 export const RESEARCH_EXPERIENCE = [
   {
-    role: 'Research Associate',
+    role: 'Research Intern',
     group: 'MiCoSys Lab (Machine Intelligence & Complex Systems)',
     institution: 'San José State University',
     advisor: 'Dr. Saptarshi Sengupta',
-    period: '2025 – Present',
+    period: 'Mar 2026 – Present',
     location: 'Remote',
     current: true,
     points: [
-      'First author on our poster at the Stanford Graph Learning Workshop 2026, on whether LLM text features help temporal link prediction.',
-      'Reproduced CROSS (NeurIPS 2025) and re-ran it against 100 sampled negatives. Its lead over a text-aware baseline mostly disappears, except on new nodes. Full paper in preparation.',
+      'First author on our poster at the Stanford Data-Centric AI Workshop 2026, on whether LLM text features help temporal link prediction on DTGB text-attributed graphs (Enron, ICEWS1819).',
+      'Reproduced CROSS and ran controlled ablations against DyGFormer and a structure-aware gate (SAGE) over 5 seeds. Under a 100-negative protocol its lead mostly disappears, except on new nodes. Full paper in preparation.',
     ],
   },
   {
-    role: 'Deep Learning Research Intern',
+    role: 'Research Intern',
     group: 'Medical Informatics Lab',
     institution: 'IIT Kharagpur',
-    advisor: 'Dr. Subhamoy Mandal · Ms. Pragya Gupta',
-    period: 'Jun 2023 – Aug 2023',
+    advisor: 'Dr. Subhamoy Mandal',
+    period: 'Summer 2023',
     location: 'Remote',
     current: false,
     points: [
-      'Macular degeneration from multimodal retinal scans with mixed resolutions and missing modalities. Encoded each modality separately, then fused at the feature level.',
-      'Presented at the IIT Kharagpur Digital Health Symposium.',
+      'Built dual-encoder, cross-attention models to detect macular degeneration from thermal and structural OCT, robust to missing modalities and mixed resolutions.',
+      'Compared RGB, HSV and thermal inputs for detection. Presented at the IIT Kharagpur Digital Health Symposium.',
     ],
   },
   {
     role: 'Undergraduate Researcher',
-    group: 'Cybersecurity & Quantum Computing Research Group',
+    group: 'Cybersecurity & Quantum Computing Group',
     institution: 'MIT Manipal',
-    advisor: 'Dr. Vivekananda Bhat',
-    period: 'Feb 2022 – Nov 2023',
+    advisor: 'Dr. Vivekananda Bhat K.',
+    period: '2022 – 2023',
     location: 'Manipal, India',
     current: false,
     points: [
-      'QSVC, Pegasos QSVC and a quanvolutional neural network against classical baselines on ECG images. 97% accuracy, 10 to 14 points higher.',
-      'Funded by MeitY and AWS. Published in IEEE Access.',
+      'Benchmarked QSVC, Pegasos QSVC and quanvolutional networks on ECG images. The quanvolutional model reached 97.31%, 3.88 points above a comparable CNN.',
+      'Extended Pegasos QSVC to four classes. Supported by a $10,200 MeitY–AWS QCAL grant. Published in IEEE Access.',
     ],
   },
   {
-    role: 'Undergraduate Research Assistant',
+    role: 'Undergraduate Researcher',
     group: 'Biometrics & Software Engineering Group',
     institution: 'MIT Manipal',
-    advisor: 'Dr. Srikanth Prabhu · Mr. Govardhan Hegde',
-    period: 'Jul 2022 – Oct 2023',
+    advisor: 'Dr. Srikanth Prabhu',
+    period: '2022 – 2023',
     location: 'Manipal, India',
     current: false,
     points: [
-      'Retinal vessel segmentation over 3,000 fundus images with CLAHE, Gaussian smoothing and edge detection.',
-      'The images left Kasturba Medical College\'s network, so the pipeline encrypts them with Diffie–Hellman and AES-256. Published in Springer CCIS.',
+      'Co-developed EyeEncrypt, secure retinal vessel segmentation for 3,000+ fundus images (Diffie–Hellman, AES-256).',
+      'Demonstrated it to ophthalmologists at Kasturba Medical College. Published at ATIS 2022 and in a review.',
     ],
   },
   {
-    role: 'Undergraduate Researcher',
-    group: 'NLP / Social Computing',
+    role: 'Research Intern',
+    group: 'Department of Information & Communication Technology',
     institution: 'MIT Manipal',
     advisor: 'Dr. Nisha P. Shetty',
-    period: 'Sep 2022 – Jul 2023',
+    period: '2022 – 2023',
     location: 'Manipal, India',
     current: false,
     points: [
-      'BERT and XLNet with a propagation graph over 10,000 posts to detect vaccine misinformation. F1 above 0.90.',
-      'Published in Procedia Computer Science (ICMLDE 2023).',
+      'Fine-tuned BERT and XLNet on the 15,073-tweet ANTi-Vax dataset to separate misinformation from general vaccine discussion.',
+      'Built a Reddit user-association graph from vaccine threads and inspected dense clusters with NetworkX. Published in Procedia Computer Science.',
     ],
   },
 ] as const
 
 // ── Professional experience ───────────────────────────────────────────────────
 export const PROFESSIONAL = {
-  summary: 'LLM agents and ML services for Cisco Supply Chain Operations.',
+  summary: 'LLM agents and ML services for Cisco Supply Chain.',
   roles: [
     {
-      title: 'Software Engineer 2, AI Acceleration',
+      title: 'Software Engineer II',
       org: 'Cisco Systems',
-      team: 'Supply Chain Operations',
-      period: 'Aug 2025 – Present',
+      team: 'AI Acceleration Team',
+      period: 'Oct 2025 – Present',
       current: true,
       points: [
-        'Led an agentic suite on Cisco\'s product testing platform that works out whether a failed hardware test is down to the script, the environment or the product. It root-causes 70% of previously undiagnosed failures and runs in factories worldwide.',
-        'Contributed to a support-queue agent that resolves 30% of routine requests on its own. Case volume is down 35% and mean time to resolution down 40%.',
-        'The two systems save an estimated $450,000 a year. Presented the work to Cisco\'s Chief Supply Chain Officer.',
+        'Lead developer of an agentic test-triage platform (RAG, LLM diagnosis, MCP) deployed in factories worldwide. It finds root causes for about 70% of previously undiagnosed failures, even on new products.',
+        'Contributed to a support-queue agent that resolves 30% of routine requests. Together the two systems cut case volume 35% and MTTR 40%, saving $450,000 a year. Presented to Cisco\'s Chief Supply Chain Officer.',
+        'Took the platform from prototype to production with the security, platform and infrastructure teams. Mentor 5+ junior engineers.',
       ],
     },
     {
-      title: 'Software Engineer 1 · Software Engineering Intern',
+      title: 'Software Engineer I',
       org: 'Cisco Systems',
-      team: 'Supply Chain Operations',
-      period: 'Jan 2024 – Aug 2025',
+      team: 'Supply Chain Transformation',
+      period: 'Aug 2024 – Sep 2025',
       current: false,
       points: [
-        'Intern to SE1 in 6 months, SE1 to SE2 in 12.',
-        'Rebuilt a hand-deployed Python 2 manufacturing service as containerized code. Deploys went from about 6 hours to 4 minutes.',
-        'Third of 100+ in Cisco\'s intern case study competition with an NLP pipeline that standardized 50,000 supplier names.',
+        'Built Quality Transformation metrics engines tracking 10+ quality metrics across 200+ product lines.',
+        'Added agentic AI to failure analysis on factory test lines, and split legacy monoliths into 10+ FastAPI microservices on Kubernetes across 8 global sites.',
+        'Deployed a computer-vision system on assembly lines that flags connector edge gaps from camera images, replacing manual checks.',
+      ],
+    },
+    {
+      title: 'Software Engineering Intern',
+      org: 'Cisco Systems',
+      team: 'Supply Chain Organization',
+      period: 'Jan 2024 – Jun 2024',
+      current: false,
+      points: [
+        'Rebuilt a Python 2 workflow as microservices with CI/CD. Deploys went from 6 hours to 4 minutes.',
+        'Built a supplier-name standardization pipeline across 50,000+ records. Second runner-up, Cisco Intern Case Study Competition.',
       ],
     },
   ],
@@ -543,58 +573,88 @@ export const EDUCATION = [
 // ── Achievements & leadership ─────────────────────────────────────────────────
 export const ACHIEVEMENTS = [
   {
-    group: 'Research Recognition & Competitions',
+    group: 'Competitions',
     items: [
       {
-        title: 'Grand Finalist, QETCI Global Quantum Hackathon',
-        detail: 'Top 16 of 1,600+ teams across 25+ countries (quantum ML).',
-        year: '2022',
+        title: 'Winner, Offensive Summit CTF',
+        detail: 'Capture-the-flag security competition, Cisco.',
+        year: '2026',
       },
       {
-        title: 'Grand Finalist, Smart India Hackathon (NDRF track)',
-        detail: 'Led a team of 6 on VIKAS, a multimodal disaster-response system. National finalist among 160,000+ participants.',
-        year: '2022',
-      },
-      {
-        title: '2nd Runner-Up, Cisco Intern Case Study Competition',
-        detail: 'NLP supplier-name standardization, 50,000+ records, 100+ entries.',
+        title: 'Second Runner-Up, Cisco Intern Case Study Competition',
+        detail: 'Supplier-name standardization, 100+ entries.',
         year: '2024',
+      },
+      {
+        title: 'Grand Finalist, Global Quantum Science and Technology Hackathon',
+        detail: 'Top 16 of 1,626 teams, with QuCardio.',
+        year: '2022',
+      },
+      {
+        title: 'Grand Finalist and Team Lead, Smart India Hackathon',
+        detail: 'VIKAS, among 160,000+ students from 2,235+ institutes.',
+        year: '2022',
       },
     ],
   },
   {
-    group: 'Scholarships & Honors',
+    group: 'Grants, Honors & Service',
     items: [
       {
-        title: 'NTSE State Scholar',
-        detail: 'National Talent Search Examination, rank 21 of 151,000+.',
-        year: '2018',
+        title: '25+ Cisco Connected Recognition awards',
+        detail: 'For technical contribution, mentoring and volunteering.',
+        year: '2024–26',
+      },
+      {
+        title: 'Reviewer, ICMLDE',
+        detail: 'International Conference on Machine Learning and Data Engineering.',
+        year: '2025',
+      },
+      {
+        title: 'MeitY–AWS QCAL research grant',
+        detail: '$10,200 from the Quantum Computing Applications Lab, for QuCardio.',
+        year: '2023',
+      },
+      {
+        title: 'Undergraduate Research Sponsorship Grant',
+        detail: 'Manipal Academy of Higher Education.',
+        year: '2023',
       },
       {
         title: 'Thayil Lonappan George Memorial Endowment Award',
         detail: '3rd rank, All India Senior School Certificate Examination.',
         year: '2020',
       },
+      {
+        title: 'NTSE State Scholar',
+        detail: 'Government of Karnataka, rank 21 of 151,000+.',
+        year: '2018',
+      },
     ],
   },
   {
-    group: 'Selected Schools & Programmes',
+    group: 'Schools',
     items: [
       {
-        title: 'ACM Winter School on Optimization for ML & OR',
-        detail: 'Selected participant, IIT Goa.',
+        title: 'Summer School on Dynamic Resource Allocation',
+        detail: 'Centre for Networked Intelligence, IISc Bengaluru.',
         year: '2023',
       },
       {
-        title: 'Summer School on Dynamic Resource Allocation',
-        detail: 'Center for Networked Intelligence, IISc Bengaluru.',
-        year: '2023',
+        title: 'ACM Winter School on Optimization for ML & OR',
+        detail: 'IIT Goa.',
+        year: '2022',
       },
     ],
   },
   {
     group: 'Leadership',
     items: [
+      {
+        title: 'Lead Volunteer, Cisco Emerging Talent Recruitment',
+        detail: 'University Connect Track.',
+        year: '2026–',
+      },
       {
         title: 'Co-founder & Technical Head, Project Kalpana',
         detail: 'Co-founded a student group building a radio telescope. My proposal won the $13,000 university grant, and I led the software-defined radio and signal processing.',
@@ -617,25 +677,20 @@ export const ACHIEVEMENTS = [
 // ── Methods & tooling (compact, supporting only) ─────────────────────────────
 export const METHODS = [
   {
-    label: 'Research methods',
-    items: [
-      'Temporal Graph Neural Networks',
-      'Language Models on Graphs',
-      'LoRA / Adapters',
-      'Representation Learning',
-      'Tensor Decomposition',
-      'Quantum ML',
-      'Transformers / NLP',
-      'Computer Vision',
-    ],
+    label: 'Research',
+    items: ['Graph ML', 'Temporal GNNs', 'LLMs', 'PEFT (LoRA)', 'RAG', 'Agentic systems', 'Quantum ML'],
   },
   {
-    label: 'Frameworks',
-    items: ['PyTorch', 'PyTorch Geometric', 'DGL', 'DyGLib', 'TensorFlow', 'Qiskit', 'scikit-learn'],
+    label: 'Languages & ML',
+    items: ['Python', 'C++', 'SQL', 'PyTorch', 'PyG', 'DGL', 'Hugging Face', 'Qiskit', 'OpenCV', 'NetworkX'],
   },
   {
-    label: 'Systems & tooling',
-    items: ['Python', 'C++', 'CUDA', 'FastAPI', 'Docker', 'Kubernetes', 'Distributed Training'],
+    label: 'LLMs & agents',
+    items: ['LangChain', 'LangGraph', 'LangSmith', 'MCP', 'Ragas', 'DeepEval', 'Pinecone', 'Weaviate'],
+  },
+  {
+    label: 'Backend & cloud',
+    items: ['FastAPI', 'Docker', 'Kubernetes', 'AWS', 'GCP', 'Jenkins', 'GitHub Actions', 'PostgreSQL', 'Redis', 'Neo4j'],
   },
 ]
 
@@ -651,10 +706,10 @@ export const NAV_LINKS = [
   { href: '#contact', label: 'Contact' },
 ]
 
-// Compact scholarly metrics shown beneath the hero.
+// Compact metrics shown beneath the hero.
 export const HERO_STATS = [
   { value: '6', label: 'peer-reviewed publications' },
   { value: '60+', label: 'citations (Google Scholar)' },
-  { value: '2', label: 'first-author papers' },
-  { value: '4', label: 'research groups · 3 institutions' },
+  { value: '$10.2K', label: 'MeitY–AWS research grant' },
+  { value: '5', label: 'research groups · 3 institutions' },
 ] as const
