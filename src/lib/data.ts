@@ -15,7 +15,7 @@ export const PROFILE = {
   // Short callout under the name. Set to null to hide it.
   highlight: {
     label: 'Nov 2026',
-    text: 'First-author poster at the Stanford Data-Centric AI Workshop 2026',
+    text: 'First-author poster at the Stanford Graph Learning Workshop (SNAP) 2026',
     href: '#talks',
   } as { label: string; text: string; href: string } | null,
   location: 'Bengaluru, India',
@@ -51,12 +51,12 @@ export const NARRATIVE = {
       body: 'In QuCardio we benchmarked quantum kernel methods and quanvolutional networks for classifying heart disease from ECG images. The quanvolutional model reached 97.31% accuracy, 3.88 points above a comparable CNN. I also extended Pegasos QSVC from binary to four-class classification.',
     },
     {
-      heading: 'No history to learn from',
-      body: 'At Cisco I am lead developer of an agentic test-triage platform for failed hardware tests. It finds root causes for about 70% of previously undiagnosed failures, even on new products with no failure history.',
+      heading: 'Hardware test failures',
+      body: 'At Cisco I am lead developer of an agentic test-triage platform for hardware tests that fail on factory lines. It finds root causes for about 70% of previously undiagnosed failures, and it turned the manual triage steps of test and quality engineers into agent workflows.',
     },
     {
       heading: 'Text and structure',
-      body: 'At MiCoSys Lab, with Dr. Saptarshi Sengupta, I test whether LLM text features help temporal link prediction. Our first model underperformed a text-aware baseline, so we reproduced CROSS (NeurIPS 2025) and evaluated it more strictly. Against 100 sampled negatives, most of its lead disappears. Text still helps on nodes the model has not seen before, and a text encoder 15 times larger made results worse. I am first author on the poster, at the Stanford Data-Centric AI Workshop 2026.',
+      body: 'At MiCoSys Lab, with Dr. Saptarshi Sengupta, I test whether LLM text features help temporal link prediction. Our first model underperformed a text-aware baseline, so we reproduced CROSS (NeurIPS 2025), matched its published results, and evaluated it under one common protocol. The gains depend on protocol and dataset: CROSS helps most on unseen nodes but turns seed-dependent on ICEWS1819, and a text encoder 15 times larger made results worse. I am first author on the poster, at the Stanford Graph Learning Workshop (SNAP) 2026.',
     },
   ],
   future:
@@ -87,7 +87,7 @@ export const RESEARCH_QUESTIONS = [
 export const NEWS = [
   {
     date: 'Nov 2026',
-    text: 'First-author poster at the Stanford Data-Centric AI Workshop 2026 (Nov 3), on when LLM text features help temporal link prediction.',
+    text: 'First-author poster at the Stanford Graph Learning Workshop (SNAP) 2026, on when LLM text features help temporal link prediction.',
   },
   {
     date: '2026',
@@ -177,14 +177,14 @@ export const TALKS: readonly Talk[] = [
   {
     title:
       'On Link Prediction Using Node-Pair LLM Semantics and Structure in Temporal Text-Attributed Graphs',
-    venue: 'Stanford Data-Centric AI Workshop 2026, Stanford University',
+    venue: 'Stanford Graph Learning Workshop (SNAP) 2026, Stanford University',
     type: 'Poster, first author',
     year: '2026',
     authors: [
       'G. M. Prabhu',
       'S. Gupta',
-      'A. Nagarajan',
       'M. Choudhary',
+      'A. Nagarajan',
       'K. Potika',
       'S. Sengupta',
     ],
@@ -386,13 +386,13 @@ export const PROJECTS = [
     id: 'tgnn',
     title: 'LLM Text Features for Temporal Link Prediction',
     period: '2026 – Present',
-    status: 'First-author poster · Stanford Data-Centric AI Workshop 2026',
+    status: 'First-author poster · Stanford Graph Learning Workshop (SNAP) 2026',
     motivation:
       'Recent methods add LLM summaries to temporal graph networks and report large gains. We wanted to know if those gains hold under a stricter evaluation.',
     approach:
-      'Reproduced CROSS (NeurIPS 2025) from its released code and LLM chains on Enron and ICEWS1819, then ran ablations against DyGFormer and a structure-aware gate (SAGE) under a common 100-negative protocol over 5 seeds.',
+      'Reproduced CROSS (NeurIPS 2025), a reported state-of-the-art LLM-augmented model, on Enron and ICEWS1819, then compared it with DyGFormer and a lightweight structure-aware gate (SAGE) under a common 100-negative protocol over 5 seeds.',
     contribution:
-      'The reproduction matched the paper. Under 100 negatives the lead mostly closed: level on Enron, well behind on ICEWS1819 (MRR 0.60 vs 0.89). Text still helped on new nodes (0.70 vs 0.63), and swapping MiniLM for BGE-large, 15 times the size, lowered MRR on both datasets. Full paper in preparation.',
+      'The reproduction matched the published results. Under 100 negatives the gains depended on protocol and dataset: CROSS helped most on unseen nodes (MRR 0.70 vs 0.63 on Enron) but turned seed-dependent on ICEWS1819 (0.60 ± 0.20). SAGE matched CROSS, and swapping MiniLM for BGE-large, 15 times the size, did not help. Full paper in preparation.',
     stack: ['PyTorch', 'DyGLib', 'LLMs', 'Sentence encoders'],
     links: [],
   },
@@ -459,8 +459,9 @@ export const RESEARCH_EXPERIENCE = [
     location: 'Remote',
     current: true,
     points: [
-      'First author on our poster at the Stanford Data-Centric AI Workshop 2026, on whether LLM text features help temporal link prediction on DTGB text-attributed graphs (Enron, ICEWS1819).',
-      'Reproduced CROSS and ran controlled ablations against DyGFormer and a structure-aware gate (SAGE) over 5 seeds. Under a 100-negative protocol its lead mostly disappears, except on new nodes. Full paper in preparation.',
+      'Tested whether LLM-generated semantics improve temporal link prediction on DTGB text-attributed graphs (Enron, ICEWS1819) once all models are evaluated under one common protocol.',
+      'Reproduced CROSS and matched its published results, then compared it with DyGFormer and a structure-aware gate (SAGE) over 5 seeds. The gains depend on protocol and dataset: CROSS helps most on unseen nodes, SAGE matches it, and larger text encoders do not help.',
+      'First-author poster at the Stanford Graph Learning Workshop (SNAP) 2026. Full paper in preparation.',
     ],
   },
   {
@@ -512,7 +513,7 @@ export const RESEARCH_EXPERIENCE = [
     current: false,
     points: [
       'Fine-tuned BERT and XLNet on the 15,073-tweet ANTi-Vax dataset to separate misinformation from general vaccine discussion.',
-      'Built a Reddit user-association graph from vaccine threads and inspected dense clusters with NetworkX. Published in Procedia Computer Science.',
+      'Linked Reddit authors by post-comment cosine similarity and used NetworkX to find misinformation clusters. Published in Procedia Computer Science.',
     ],
   },
 ] as const
@@ -528,9 +529,9 @@ export const PROFESSIONAL = {
       period: 'Oct 2025 – Present',
       current: true,
       points: [
-        'Lead developer of an agentic test-triage platform (RAG, LLM diagnosis, MCP) deployed in factories worldwide. It finds root causes for about 70% of previously undiagnosed failures, even on new products.',
+        'Lead developer of an agentic test-triage platform (RAG, LLM diagnosis, MCP) for hardware test failures, deployed in factories worldwide. It finds root causes for about 70% of previously undiagnosed failures.',
         'Contributed to a support-queue agent that resolves 30% of routine requests. Together the two systems cut case volume 35% and MTTR 40%, saving $450,000 a year. Presented to Cisco\'s Chief Supply Chain Officer.',
-        'Took the platform from prototype to production with the security, platform and infrastructure teams. Mentor 5+ junior engineers.',
+        'Took the platform from prototype to production with the security, platform and infrastructure teams, and turned test and quality engineers\' manual triage steps into agent workflows. Mentor 5+ junior engineers.',
       ],
     },
     {
@@ -653,6 +654,11 @@ export const ACHIEVEMENTS = [
       {
         title: 'Lead Volunteer, Cisco Emerging Talent Recruitment',
         detail: 'University Connect Track.',
+        year: '2026–',
+      },
+      {
+        title: 'Track Lead Volunteer, Cisco Global Supply Chain',
+        detail: 'Innovation Track.',
         year: '2026–',
       },
       {
