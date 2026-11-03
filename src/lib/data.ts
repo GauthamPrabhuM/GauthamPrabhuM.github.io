@@ -623,7 +623,7 @@ export const ACHIEVEMENTS = [
       },
       {
         title: 'Thayil Lonappan George Memorial Endowment Award',
-        detail: '3rd rank, All India Senior School Certificate Examination.',
+        detail: '3rd rank in school, All India Senior School Certificate Examination.',
         year: '2020',
       },
       {
