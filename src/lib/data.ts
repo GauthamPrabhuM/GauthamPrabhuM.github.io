@@ -24,7 +24,7 @@ export const PROFILE = {
     github: 'https://github.com/GauthamPrabhuM',
     linkedin: 'https://www.linkedin.com/in/gautham-prabhu-5b2342192/',
     scholar: 'https://scholar.google.com/citations?user=eFGVT2UAAAAJ',
-    cv: '/assets/CV.pdf',
+    cv: '/assets/Gautham_Manuru_Prabhu_CV_Nov2026.pdf',
   },
   photo: '/assets/me.png',
 }
